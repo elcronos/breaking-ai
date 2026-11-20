@@ -256,7 +256,7 @@ body.presenting #presenter{display:block}
   </style>
   <div class="s03">
     <h1 class="hl hid">2013: <em class="attack">noise</em> you cannot see</h1>
-    <div class="abs cite credit hid" style="left:120px;top:990px">Scores: my own run on ResNet-50, shown on the next slide. Noise pattern illustrative. Technique: Szegedy et al. 2013, Goodfellow et al. 2014</div>
+    <div class="abs cite credit hid" style="left:120px;top:990px">Scores: my own run on ResNet-50, shown on the next slide: no colour value moves more than 1 of 255. Noise pattern illustrative. Technique: Szegedy et al. 2013, Goodfellow et al. 2014</div>
 
     <div class="crop ph air hid" style="left:120px"><img src="assets/pptx/adv_panda.png" alt="airliner" style="left:-124px;top:-150px"></div>
     <div class="lab aw hid" style="left:120px"><span class="pill" style="color:var(--ink);border-color:var(--ink)">AIRLINER 96.1%</span></div>
@@ -3121,7 +3121,7 @@ Deck.register('s02b', {
         FX.fade(c.q('.nlab'), 1, { dur: 400 });
         await FX.wait(300);
         FX.fade(c.q('.noise'), 0.07, { dur: 1500 });
-        await FX.type(c.q('.mult'), '× 0.001', { cps: 5 });
+        await FX.type(c.q('.mult'), '× 1/255', { cps: 5 });
       },
       async (c) => {
         const f = c.state.f;
