@@ -3424,7 +3424,10 @@ Deck.register('s02', {
   const cx = m => clamp(540 * (m + 20) / 30, 17, 523);
   const mx = m => cx(m) - 17;
   function meter(c, rec, dur = 300) {
-    c.q('.vpw .pill').textContent = rec.top === OST ? 'OSTRICH ' + pct(rec.ost) : 'AIRLINER ' + pct(rec.air);
+    const pl = c.q('.vpw .pill'), ost = rec.top === OST;
+    pl.textContent = ost ? 'OSTRICH ' + pct(rec.ost) : 'AIRLINER ' + pct(rec.air);
+    pl.className = 'pill ' + (ost ? 'attackp' : 'inkp'); pl.style.opacity = 1;
+    c.q('.mB').style.opacity = 1;
     return FX.move(c.q('.dot'), { x: mx(rec.margin), y: 0, dur, ease: FX.ease.out });
   }
   /* a small mark where the dot landed after a PGD step; the step that crosses the line is A */
@@ -3462,8 +3465,11 @@ Deck.register('s02', {
       FX.in(c.q('.flat'), { y: 24, dur: 900, delay: 150 });
       FX.fade(c.q('.cr1'), 1, { dur: 600 });
       const D = decode(), T = window.THREE, st = c.state;
-      if (!D || !T) { console.error('s04b: missing THREE or SCENES.pixels'); return; }
+      if (!D) { console.error('s04b: missing SCENES.pixels'); return; }
       const S = D.S;
+      /* state the beats need, set before any 3D work so the scores never depend on WebGL starting up */
+      Object.assign(st, { tilt: 0, sep: 0, nv: S.few.nudges.map(() => 0), nuk: 1, arrows: 0, awave: true, adir: D.dir,
+        fg: 0, pg: 0, atk: 0, dirty: true, hidden: false, t0: performance.now(), colKey: '', no3d: false });
       c.q('.vpw .pill').textContent = 'AIRLINER ' + pct(S.clean.air);
       c.q('.dot').style.transform = `translate(${mx(S.clean.margin)}px,0px)`;
       c.q('.gh').style.transform = `translate(${mx(S.fgsm_one_step.margin)}px,0px)`;
@@ -3472,7 +3478,10 @@ Deck.register('s02', {
       c.q('.l7').style.left = cx(fl.margin) + 'px'; c.q('.l7').textContent = 'step ' + S.attack.flip_step;
       c.q('.wn').textContent = c.q('.nst').textContent = String(D.last);
 
+      FX.fade(c.q('.mB'), 1, { dur: 600, delay: 300 });
       /* ---- three.js: one instanced box per tile, one instanced cone per gradient arrow ---- */
+      try {
+      if (!T) throw new Error('THREE not loaded');
       const r = new T.WebGLRenderer({ canvas: c.q('canvas.gl'), antialias: true, preserveDrawingBuffer: true });
       r.setPixelRatio(Math.min(2, (window.devicePixelRatio || 1) * Math.max(Deck.scale, 0.5)));
       r.setSize(W, H, false); r.setClearColor(0xffffff, 1);
@@ -3508,8 +3517,6 @@ Deck.register('s02', {
 
       /* fg: weight of the FGSM step, pg: weight of the PGD run, atk: PGD position (0 = random start .. last step),
          adir: which gradient the arrows show (the clean one, or the one re-read before a PGD step), awave: ripple in */
-      Object.assign(st, { tilt: 0, sep: 0, nv: nud.map(() => 0), nuk: 1, arrows: 0, awave: true, adir: D.dir,
-        fg: 0, pg: 0, atk: 0, dirty: true, hidden: false, t0: performance.now(), colKey: '' });
       const m4 = new T.Matrix4(), q0 = new T.Quaternion(), p = new T.Vector3(), s = new T.Vector3(), lift = new Float32Array(N * N);
       const pgdH = (i, f) => {                         /* mean change of tile i at PGD position f, interpolated between steps */
         const a = clamp(Math.floor(f), 0, D.hs.length - 1), b = clamp(Math.ceil(f), 0, D.hs.length - 1);
@@ -3553,16 +3560,17 @@ Deck.register('s02', {
         cam.position.set(lerp(0, 2, k), lerp(0, -1, k), lerp(D0, 96, k)); cam.lookAt(lerp(0, 2, k), lerp(0, -5.5, k), 0);
         r.render(scene, cam);
       });
-      await FX.fade(c.q('.mB'), 1, { dur: 600, delay: 500 });
+      } catch (e) { st.no3d = true; console.error('s04b: 3D view unavailable, showing the flat photo', e); }
+      await FX.wait(700);
+      c.q('.mB').style.opacity = 1;
       await FX.stamp(c.q('.vpw .pill'), 'AIRLINER ' + pct(S.clean.air), 'inkp');
     },
     beats: [
       /* 1: the photo is made of pixels: it tilts into 3D and separates into tiles */
       async (c) => {
         const st = c.state;
-        c.q('canvas.gl').style.opacity = 1;
         swapSub(c, 1);
-        await FX.fade(c.q('.flat'), 0, { dur: 450 });
+        if (!st.no3d) { c.q('canvas.gl').style.opacity = 1; await FX.fade(c.q('.flat'), 0, { dur: 450 }); }
         FX.in(c.q('.mA'), { y: 10, dur: 500 });
         FX.count(c.q('.cnt'), 150528, { dur: 1500 });
         await FX.tween(1700, v => { st.tilt = v; st.sep = v; st.dirty = true; }, t => t);
@@ -3570,7 +3578,7 @@ Deck.register('s02', {
       /* 2: nudge six tiles hard, one after the other: the real score barely moves, both ways */
       async (c) => {
         const D = decode(), st = c.state; if (!D || !st.nv) return;
-        swapSub(c, 2); FX.fade(c.q('.hx'), 1, { dur: 400 });
+        swapSub(c, 2); if (!st.no3d) FX.fade(c.q('.hx'), 1, { dur: 400 });
         const dl = c.q('.dl'); let prev = D.S.clean;
         for (let k = 0; k < st.nv.length; k++) {
           const n = D.S.few.nudges[k];
