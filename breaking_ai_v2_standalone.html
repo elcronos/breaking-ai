@@ -256,10 +256,10 @@ body.presenting #presenter{display:block}
   </style>
   <div class="s03">
     <h1 class="hl hid">2013: <em class="attack">noise</em> you cannot see</h1>
-    <div class="abs cite credit hid" style="left:120px;top:990px">Illustrative example. Technique: Szegedy et al. 2013, Goodfellow et al. 2014</div>
+    <div class="abs cite credit hid" style="left:120px;top:990px">Scores: my own run on ResNet-50, shown on the next slide. Noise pattern illustrative. Technique: Szegedy et al. 2013, Goodfellow et al. 2014</div>
 
     <div class="crop ph air hid" style="left:120px"><img src="assets/pptx/adv_panda.png" alt="airliner" style="left:-124px;top:-150px"></div>
-    <div class="lab aw hid" style="left:120px"><span class="pill" style="color:var(--ink);border-color:var(--ink)">AIRLINER 83.7%</span></div>
+    <div class="lab aw hid" style="left:120px"><span class="pill" style="color:var(--ink);border-color:var(--ink)">AIRLINER 96.1%</span></div>
 
     <div class="op plus hid" style="left:620px">+</div>
 
@@ -272,7 +272,7 @@ body.presenting #presenter{display:block}
     <div class="plate hid"></div>
     <div class="crop ph ghost hid" style="left:120px"><img src="assets/pptx/adv_panda.png" alt="" style="left:-124px;top:-150px"></div>
     <div class="crop ph adv hid" style="left:1300px"><img src="assets/pptx/adv_panda.png" alt="adversarial airliner" style="left:-1524px;top:-152px"></div>
-    <div class="lab ow hid" style="left:1300px"><span class="pill empty ostrich">OSTRICH 99.2%</span></div>
+    <div class="lab ow hid" style="left:1300px"><span class="pill empty ostrich">OSTRICH 99.0%</span></div>
 
     <canvas class="fx f-noise" width="1180" height="560" style="left:680px;top:240px"></canvas>
   </div>
@@ -3139,7 +3139,7 @@ Deck.register('s02b', {
       async (c) => {
         await FX.wait(250);
         FX.in(c.q('.plate'), { x: -28, y: 28, dur: 450 });
-        await FX.stamp(c.q('.ostrich'), 'OSTRICH 99.2%', 'attackp');
+        await FX.stamp(c.q('.ostrich'), 'OSTRICH 99.0%', 'attackp');
       },
     ],
   });
