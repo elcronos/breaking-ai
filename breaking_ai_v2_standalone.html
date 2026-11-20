@@ -290,7 +290,7 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Here is the picture to keep in your head for the whole talk. A model draws invisible borders between categories, and your photo is a dot near one of them. [click] Every pixel is a tiny dial, and the dials point every which way. [click] Turn each one a hair the right way, and together they push the dot across the border. Three things made this shocking. [click] You cannot see it. [click] The model is not confused, it is certain. [click] And it is cheap: no break-in, no stolen passwords, just a carefully chosen input.</aside>
 </section>
-<section class="slide" data-id="s04b" data-seconds="80" data-title="Every pixel is a dial">
+<section class="slide" data-id="s04b" data-seconds="68" data-title="Every pixel is a dial">
   <style>
     .s04b .view{position:absolute;left:40px;top:236px;width:1180px;height:760px}
     .s04b .view canvas{position:absolute;left:0;top:0;width:1180px;height:760px}
@@ -403,7 +403,7 @@ body.presenting #presenter{display:block}
     <div class="abs cite cr cr6 hid" style="left:120px;top:990px">White box: my run on this photo, stop at ostrich 99%. Black box: the published median. Diagrams illustrative.</div>
   </div>
 
-  <aside class="notes">Let us open up that airliner. [click] To the model, this is not a plane. It is numbers: 224 by 224 pixels, three colour values each. About 150 thousand numbers, each one a dial the attacker can turn. [click] Turn a few dials, even hard: 96 percent airliner, 95, 94, back up again. Some help, some hurt: every pixel has its own right direction. [click] That direction is called the gradient: for every pixel, which way to nudge toward ostrich. [click] The simplest attack, FGSM, takes one step: every dial turned one notch, the way the gradient says. Airliner drops from 96 to 62 percent. Not enough. [click] PGD takes small steps instead: step, read the gradient again, step again. Projected means it never leaves the budget: no number ends up more than one notch from the original. Too small to see. At step 7 it crosses the line; at step 11, ostrich, 99 percent. [click] How does the attacker get the gradient? With a white box you have the model itself, so you just compute it. With a black box you can only ask questions, so you estimate it from the answers. That is NES, and in the paper a typical attack needed about eleven thousand questions.</aside>
+  <aside class="notes">Let us open up that airliner. [click] To the model, this is not a plane. It is numbers: 224 by 224 pixels, three colour values each. About 150 thousand numbers, each one a dial the attacker can turn. [click] Turn a few dials, even hard: 96 percent airliner, 95, 94, back up again. Some help, some hurt: every pixel has its own right direction. [click] That direction is called the gradient: for every pixel, which way to nudge toward ostrich. [click] The simplest attack, FGSM, takes one step: every dial turned one notch, the way the gradient says. Airliner drops from 96 to 62 percent. Not enough. [click] PGD takes small steps instead: step, read the gradient again, step again. Projected means it never leaves the budget: no number ends up more than one notch from the original. Too small to see. At step 7 it crosses the line; at step 11, ostrich, 99 percent. All of that needed the gradient, and for the gradient I had the model in my hands. Hold that thought: what if you cannot see inside?</aside>
 </section>
 <section class="slide" data-id="s05" data-seconds="42" data-title="Two words flip a verdict">
   <style>
@@ -1723,7 +1723,7 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Chatbots get the headlines, but a lot of AI in production is quieter. A decision model takes a photo or a document, answers one question, and returns a number. Our parcel: damaged, 2 percent. Refund rejected. [click] A tablet from a factory line: is it defective? 84 percent, yes. [click] An invoice: what kind of document is this? An invoice, fully sure. [click] A customer review: is it positive? No, neutral, 87 percent. [click] Nobody chats with it. It just decides, thousands of times a day, and money moves. That is what was judging our parcel. So I spent my own time and API credits finding out how hard it is to make two of these models decide wrong.</aside>
 </section>
-<section class="slide" data-id="s18b" data-seconds="55" data-title="Three ways to attack a model">
+<section class="slide" data-id="s18b" data-seconds="62" data-title="Three ways to attack a model">
   <style>
     .s18b .col{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
     .s18b .vr{position:absolute;top:274px;width:1px;height:622px;background:var(--grey-2)}
@@ -1773,7 +1773,7 @@ body.presenting #presenter{display:block}
       </svg>
       <div class="plab pl1 hid" style="left:350px;width:290px">open weights</div>
       <p class="fact f1 hid" style="left:120px;top:714px">Compute the direction.</p>
-      <p class="fact g f1 hid" style="left:120px;top:756px">The easy case.</p>
+      <p class="fact g f1 hid" style="left:120px;top:756px">Easy: the airliner took 11 steps.</p>
       <div class="cite cc cr1 hid" style="left:120px">FGSM: Goodfellow et al., 2015.</div>
     </div>
 
@@ -1848,7 +1848,7 @@ body.presenting #presenter{display:block}
     <p class="end hid">My two models are API only. I tried both black box routes.</p>
   </div>
 
-  <aside class="notes">To attack, you need the direction. How you get it depends on what you can reach. [click] White box: you have the model, say an open one from Hugging Face. You look inside and compute the direction. The easy case. [click] Black box: you can only ask, through an API. Ask again and again, read the answers, and estimate the direction. A score makes it easier. Only a label? Still works, just more questions. [click] Or attack a stand-in, a surrogate: a similar open model, or your own copy trained on its answers, the distillation from earlier. Attack it freely, then fire at the real one and hope it transfers. [click] Both are black box attacks. My two models are API only, so no white box. I tried both routes: queries next, the stand-in later.</aside>
+  <aside class="notes">To attack, you need the direction. How you get it depends on what you can reach. [click] White box: you have the model, say an open one from Hugging Face. You look inside and compute the direction. The easy case: that is how I turned the airliner into an ostrich, in eleven steps. [click] Black box: you can only ask, through an API. Ask again and again, read the answers, and estimate the direction. In the papers, that takes thousands of questions. A score makes it easier. Only a label? Still works, just more questions. [click] Or attack a stand-in, a surrogate: a similar open model, or your own copy trained on its answers, the distillation from earlier. Attack it freely, then fire at the real one and hope it transfers. [click] Both are black box attacks. My two models are API only, so no white box. I tried both routes: queries next, the stand-in later.</aside>
 </section>
 <section class="slide" data-id="s19" data-seconds="52" data-title="Hot and cold with a black box">
   <style>
@@ -2998,19 +2998,25 @@ print(r.json()[<span class="s">"answers"</span>][<span class="s">"claim"</span>]
     } else {
       if (S.bleed) FX.anim(S.root, [{ opacity: 1, transform: 'none', clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, transform: 'none', clipPath: 'inset(0 0% 0 0)' }], { dur: 700, ease: FX.ease.inout });
       else FX.anim(S.root, [{ opacity: 0, transform: 'translateY(12px)', clipPath: 'inset(0 0% 0 0)' }, { opacity: 1, transform: 'none', clipPath: 'inset(0 0% 0 0)' }], { dur: 450 });
-      if (spec.enter) { Deck.busy = true; try { await spec.enter(ctx); } finally { Deck.busy = false; Deck.instant = false; } }
+      if (spec.enter) { Deck.busy = true; try { await spec.enter(ctx); } finally { clearTimeout(Deck._unstick); Deck.busy = false; Deck.instant = false; } }
     }
     hash(); chrome();
   }
   async function next() {
     if (Deck.t0 === null) Deck.t0 = performance.now();
-    if (Deck.busy) { Deck.ff(); return; }
+    if (Deck.busy) {
+      Deck.ff();
+      /* safety net: if an effect never settles (seen on phones), release the deck so the next tap advances */
+      clearTimeout(Deck._unstick);
+      Deck._unstick = setTimeout(() => { if (Deck.busy) { console.warn('deck: released a stuck effect'); Deck.busy = false; Deck.instant = false; } }, 800);
+      return;
+    }
     const S = Deck.slides[Deck.i];
     if (Deck.beat < S.beats.length) {
       const k = Deck.beat++; chrome(); hash();
       Deck.busy = true;
       try { await S.beats[k](Deck.ctx); } catch (e) { console.error(S.id, 'beat', k, e); }
-      finally { Deck.busy = false; Deck.instant = false; }
+      finally { clearTimeout(Deck._unstick); Deck.busy = false; Deck.instant = false; }
     } else if (Deck.i < Deck.slides.length - 1) { await go(Deck.i + 1); }
   }
   async function prev() {
@@ -3512,46 +3518,6 @@ Deck.register('s02', {
         st.arrows = 0; st.dirty = true;
         FX.fade(c.q('.mA'), 0, { dur: 250 });
         await FX.in(c.q('.mC'), { y: 12, dur: 500, delay: 100 });
-      },
-      /* 6: how the attacker gets the gradient: white box (compute it) and black box (estimate it from questions) */
-      async (c) => {
-        const D = decode(), st = c.state; if (!D) return;
-        FX.fade(c.qa('.hl1, .sb, .mA, .mB, .mC, .hx'), 0, { dur: 300 });
-        swapCredit(c, 6);
-        await FX.fade(c.q('.view'), 0, { dur: 350 });
-        st.hidden = true;
-        const aw = miniGrid(c.q('.gw'), D.mini), ab = miniGrid(c.q('.gb'), D.mini);
-        FX.in(c.q('.hl2'), { dur: 600 });
-        FX.in(c.q('.cw'), { y: 18, dur: 600 });
-        FX.in(c.q('.cb'), { y: 18, dur: 600, delay: 100 });
-        await FX.wait(350);
-        /* white box: the whole gradient at once */
-        const white = (async () => { await FX.draw(c.qa('.wa, .wah'), { dur: 260 }); await FX.fade(aw, 1, { dur: 220 }); })();
-        /* black box: questions in, scores out, the arrows fill in as the answers add up */
-        const NQ = 11550, bn = c.q('.bn');                    /* cited: Ilyas et al. 2018, Table 1, query-limited, median */
-        const rnd = k => { const v = Math.sin(k * 12.9898 + 4.1) * 43758.5453; return v - Math.floor(v); };
-        const order = ab.map((_, k) => k).sort((a, b) => rnd(a) - rnd(b));
-        const NS = 'http://www.w3.org/2000/svg', qs = c.q('.qs'), P = [];
-        for (let k = 0; k < 7; k++) {
-          const sq = document.createElementNS(NS, 'rect'); sq.setAttribute('width', 24); sq.setAttribute('height', 24); sq.setAttribute('fill', '#C2C3C9');
-          const an = document.createElementNS(NS, 'text'); an.setAttribute('class', 'deco'); an.setAttribute('fill', '#62636A'); an.style.font = '500 22px var(--mono)';
-          an.textContent = ['0.03', '0.02', '0.05', '0.04', '0.02', '0.06', '0.03'][k];
-          qs.appendChild(sq); qs.appendChild(an); P.push([sq, an]);
-        }
-        const black = FX.tween(1800, t => {
-          bn.textContent = Math.round(NQ * t).toLocaleString('en-US');
-          const shown = Math.floor(Math.pow(t, 1.3) * ab.length);
-          order.forEach((k, j) => { ab[k].style.opacity = j < shown ? 1 : 0; });
-          P.forEach(([sq, an], k) => {
-            const u = (t * 3.6 - k * 0.36);                   /* each question: fly in (0..0.5), answer flies out (0.5..1) */
-            const f = u - Math.floor(u), on = t < 0.97 && u > 0;
-            sq.setAttribute('x', lerp(380, 238, sstep(f * 2))); sq.setAttribute('y', 150);
-            sq.style.opacity = on && f < 0.5 ? 1 : 0;
-            an.setAttribute('x', lerp(236, 330, sstep(f * 2 - 1))); an.setAttribute('y', 252);
-            an.style.opacity = on && f >= 0.5 ? 1 : 0;
-          });
-        }, t => t);
-        await Promise.all([white, black]);
       },
     ],
   });
