@@ -1520,10 +1520,10 @@ body.presenting #presenter{display:block}
       <path class="ln draw br2" style="stroke-width:3" d="M1250,240 H1800 V254"/>
       <path class="ln draw br2n" style="stroke-width:3" d="M1250,240 V226"/>
     </svg>
-    <p class="end hid">My two models are API only. I tried both black box routes.</p>
+    <p class="end hid">My two models are API only. So: black box.</p>
   </div>
 
-  <aside class="notes">To attack, you need the direction. How you get it depends on what you can reach. [click] White box: you have the model, say an open one from Hugging Face. You look inside and compute the direction. The easy case: that is how I turned the airliner into an ostrich, in eleven steps. [click] Black box: you can only ask, through an API. Ask again and again, read the answers, and estimate the direction. In the papers, that takes thousands of questions. A score makes it easier. Only a label? Still works, just more questions. [click] Or attack a stand-in, a surrogate: a similar open model, or your own copy trained on its answers, the distillation from earlier. Attack it freely, then fire at the real one and hope it transfers. [click] Both are black box attacks. My two models are API only, so no white box. I tried both routes: queries next, the stand-in later.</aside>
+  <aside class="notes">To attack, you need the direction. How you get it depends on what you can reach. [click] White box: you have the model, say an open one from Hugging Face. You look inside and compute the direction. The easy case: that is how I turned the airliner into an ostrich, in eleven steps. [click] Black box: you can only ask, through an API. Ask again and again, read the answers, and estimate the direction. In the papers, that takes thousands of questions. A score makes it easier. Only a label? Still works, just more questions. [click] Or attack a stand-in, a surrogate: a similar open model, or your own copy trained on its answers, the distillation from earlier. Attack it freely, then fire at the real one and hope it transfers. [click] Both are black box attacks. My two models are API only, so no white box. Queries next.</aside>
 </section>
 <section class="slide" data-id="s19" data-seconds="56" data-title="Hot and cold with a black box">
   <style>
@@ -1730,63 +1730,6 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Pixels still work when the model is less sure. This is a photo from a standard industrial inspection benchmark: a tablet with a chipped edge. The model flags it, defective, 84 percent. [click] I played hot and cold again, this time with faint noise spread over the whole image. [click] Six questions. The chip is still there, you can see it, and the model now says: passes inspection. [click] This is everything I changed, magnified thirty times. On a production line nobody would notice. The failure does not show up in the factory. It shows up in a pharmacy. Across my experiments the pattern held: the less sure the model, the cheaper the attack. A red traffic light at 99.6 percent never turned green, whatever I threw at it.</aside>
 </section>
-<section class="slide" data-id="s24" data-seconds="48" data-title="Words travel. Pixels do not.">
-  <style>
-    .s24 .mb{position:absolute;top:236px;width:360px;height:560px;border:2.5px solid var(--ink);border-radius:var(--r);background:#fff}
-    .s24 .mb .lb{position:absolute;left:26px;top:24px;width:300px;font:500 34px/1.15 var(--sans);letter-spacing:-.01em;color:var(--ink)}
-    .s24 .mb.L{left:120px}
-    .s24 .mb.R{left:1440px}
-    .s24 .who{position:absolute;top:818px}
-    .s24 .wd{position:absolute;left:148px;font-size:30px;white-space:nowrap;z-index:3}
-    .s24 .wd svg{display:inline-block;vertical-align:middle;margin:0 6px 4px}
-    .s24 .tile{position:absolute;top:664px;width:72px;height:72px;image-rendering:pixelated;z-index:3}
-    .s24 .wall{position:absolute;left:1418px;top:236px;width:22px;height:560px;background:var(--ink);transform-origin:50% 100%}
-    .s24 .grp{position:absolute;left:530px;top:572px;width:332px;height:196px;border:2.5px solid var(--grey-2);border-radius:var(--r)}
-    .s24 .grp .label{position:absolute;left:24px;top:20px;white-space:nowrap}
-    .s24 .res{position:absolute;left:480px;width:960px;text-align:center}
-    .s24 .cap{position:absolute;left:480px;width:960px;text-align:center;font:500 34px/1.2 var(--sans);color:var(--ink)}
-  </style>
-  <div class="s24">
-    <h1 class="hl hid">Words <em class="attack">travel</em>. Pixels do not.</h1>
-
-    <!-- the two models -->
-    <div class="mb L hid"><div class="lb">the model I practised on</div></div>
-    <div class="mb R hid"><div class="lb" style="display:flex;align-items:center;gap:14px">the target
-      <svg width="26" height="30" viewBox="0 0 26 30" aria-hidden="true"><rect x="2.5" y="13" width="21" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M7 13 V8.5 a6 6 0 0 1 12 0 V13" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></div></div>
-    <span class="chip who wl hid" style="left:120px">TypeSafe Jev</span>
-    <span class="chip who wr hid" style="left:1440px">Gemini Decision 1</span>
-
-    <!-- beat 1: rewritten reviews. The originals stay on the practice model, copies cross the gap -->
-    <span class="chip attack wd w0 hid" style="top:372px">5 stars</span>
-    <span class="chip attack wd w1 hid" style="top:438px">okay<svg width="34" height="20" viewBox="0 0 34 20" aria-hidden="true"><path d="M2 10 H29 M21 3 L29 10 L21 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>good</span>
-    <span class="chip attack wd w2 hid" style="top:504px">would buy again</span>
-    <span class="chip attack wd wf f0 hid" style="top:372px">5 stars</span>
-    <span class="chip attack wd wf f1 hid" style="top:438px">okay<svg width="34" height="20" viewBox="0 0 34 20" aria-hidden="true"><path d="M2 10 H29 M21 3 L29 10 L21 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>good</span>
-    <span class="chip attack wd wf f2 hid" style="top:504px">would buy again</span>
-
-    <!-- beat 2 -->
-    <div class="res r18 hid" style="top:252px"><span class="num num-lg attack">18 / 18</span></div>
-    <div class="cap c18 hid" style="top:480px">rewritten reviews fooled the other model</div>
-
-    <!-- beat 3: pixel noise built on open models, stopped in front of the target -->
-    <div class="grp src hid"><div class="label">built on open models</div></div>
-    <canvas class="tile ts hid" width="12" height="12" style="left:556px"></canvas>
-    <canvas class="tile ts hid" width="12" height="12" style="left:646px"></canvas>
-    <canvas class="tile ts hid" width="12" height="12" style="left:736px"></canvas>
-    <canvas class="tile tf hid" width="12" height="12" style="left:556px"></canvas>
-    <canvas class="tile tf hid" width="12" height="12" style="left:646px"></canvas>
-    <canvas class="tile tf hid" width="12" height="12" style="left:736px"></canvas>
-    <div class="wall hid"></div>
-    <div class="res r0 hid" style="top:566px"><span class="num num-lg" style="color:var(--grey-1)">0</span></div>
-    <div class="cap c0 hid" style="top:768px;color:var(--grey-1)">pixel attacks</div>
-
-    <div class="abs end hid" style="left:480px;top:880px;width:960px;text-align:center;font:600 46px/1.1 var(--sans);letter-spacing:-.025em;color:var(--ink)">Hiding your model is not a defence.</div>
-
-    <div class="abs cite hid" style="left:120px;top:976px;display:flex;align-items:center;gap:18px"><span class="flag flag-b">OWN EXPERIMENT</span><span>My experiments. Text: TypeSafe Jev and Gemini Decision 1, both directions. Pixels: open models to Gemini Decision 1. Small samples.</span></div>
-  </div>
-
-  <aside class="notes">One last experiment: the stand-in route. The sneakiest attack never touches the target at all: practise on a model you own, then send the finished attack once. [click] So I rewrote product reviews until they fooled one decision model, then replayed them on the other, a different company's product. [click] Eighteen out of eighteen worked on the model they were never tuned for. [click] My pixel attacks, built on open models: zero. So noise is tied to one model, but meaning travels. And every attack that surprised you tonight was made of meaning: five stars, dented box, a haiku in a bio. An attacker who writes in English needs neither your weights nor your API. And hiding your model is not a defence.</aside>
-</section>
 <section class="slide" data-id="s25" data-turn data-seconds="52" data-title="You cannot fix what you do not measure">
   <style>
     .s25 .ck{left:120px;top:236px;width:1680px;height:708px;padding:0}
@@ -1918,77 +1861,21 @@ body.presenting #presenter{display:block}
     <div class="abs cite cr hid" style="left:120px;top:984px">Tablet: MVTec AD. Portrait: Carlini et al., 2023. 6 and 18 / 18: my experiments (Gemini Decision 1, TypeSafe Jev).</div>
   </div>
 
-  <aside class="notes">Filters on what goes in and out are worth keeping, but they read text: they are close to blind to a tablet photo with faint noise. So measure. Every attack from tonight becomes a test that runs before each release. [click] Robustness: give a simulated attacker a budget of questions and count how many it takes to flip your model. Six for my tablet. That is a number you can track. [click] Transfer: replay attacks built on other models. Mine carried over eighteen times out of eighteen. [click] Privacy: try to pull your training data back out, the way that photo came out of the image generator. [click] Safety: a fixed set of risky requests, and the refusal rate. Four numbers, on the same dashboard as accuracy. And for injection, keep a collection of booby traps, emails with hidden instructions, documents with white text, a bio asking for a haiku, and run your assistant over them before every release.</aside>
+  <aside class="notes">Filters on what goes in and out are worth keeping, but they read text: they are close to blind to a tablet photo with faint noise. So measure. Every attack from tonight becomes a test that runs before each release. [click] Robustness: give a simulated attacker a budget of questions and count how many it takes to flip your model. Six for my tablet. That is a number you can track. [click] Transfer: replay attacks built on other models. When I rewrote reviews to fool one decision model, they fooled the other one too, eighteen times out of eighteen. [click] Privacy: try to pull your training data back out, the way that photo came out of the image generator. [click] Safety: a fixed set of risky requests, and the refusal rate. Four numbers, on the same dashboard as accuracy. And for injection, keep a collection of booby traps, emails with hidden instructions, documents with white text, a bio asking for a haiku, and run your assistant over them before every release.</aside>
 </section>
-<section class="slide" data-id="s28a" data-seconds="65" data-title="When AI gets a body">
+<section class="slide" data-id="s28a" data-seconds="26" data-title="When AI gets a body">
   <style>
-    .s28a .gl{position:absolute;left:0;top:0;width:1920px;height:1080px}
-    .s28a .dim{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#fff;pointer-events:none}
-    .s28a .tg,.s28a .chips{position:absolute;left:0;top:0;transform:translate(-50%,-100%);white-space:nowrap;pointer-events:none}
-    .s28a .tg{transform:translate(-18%,-100%)}
-    .s28a .tg .pill{font-size:34px;padding:10px 18px;background:#fff;color:var(--b);border:3px solid var(--b)}
-    .s28a .tg.lost .pill{color:var(--a);border-color:var(--a)}
-    .s28a .chips{display:flex;gap:12px}
-    .s28a .chips .chip{font-size:30px}
-    .s28a .plab{position:absolute;left:0;top:0;font:500 34px/1 var(--sans);color:var(--a);white-space:nowrap;pointer-events:none}
-    .s28a .pll{position:absolute;left:0;top:0;pointer-events:none}
-    .s28a .hud{position:absolute;left:120px;top:812px;width:430px;background:#fff;border:1px solid var(--grey-2);border-radius:var(--r);padding:14px 26px 12px}
-    .s28a .hud .row{display:flex;align-items:baseline;justify-content:space-between}
-    .s28a .hud .v{font:500 54px/1.18 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
-    .s28a .hud .v.attack{color:var(--a)}
-    .s28a .gpw{position:absolute;right:120px;top:186px;width:900px;height:200px}
-    .s28a .gpw .pw{position:absolute;right:0;top:0}
-    .s28a .gpw .pill{font-size:54px;padding:20px 30px 18px;border-width:3px}
-    .s28a .gpw .gln{position:absolute;right:0;top:118px;font:500 44px/1.2 var(--sans);color:var(--ink);white-space:nowrap}
-    .s28a .rw{position:absolute;right:120px;top:206px;font:500 34px/1 var(--sans);color:var(--grey-1);white-space:nowrap}
-    .s28a .refl{position:absolute;left:120px;top:300px}
-    .s28a .refl .l{font:600 86px/1.2 var(--sans);letter-spacing:-.035em;color:var(--ink);white-space:nowrap}
-    .s28a .refl .l.b{color:var(--b)}
-    .s28a .cite{background:#fff;padding:3px 10px;margin-left:-10px}
+    .s28a .ln{position:absolute;left:120px;margin:0;font:600 92px/1.08 var(--sans);letter-spacing:-.035em;color:var(--ink);white-space:nowrap}
+    .s28a .ln.b{color:var(--b)}
   </style>
   <div class="s28a">
-    <canvas class="gl hid" width="1920" height="1080"></canvas>
-    <div class="dim hid"></div>
-
     <h1 class="hl hid">When AI gets a <em class="trusted">body</em></h1>
-    <p class="sub sb hid">Digital twin: a full virtual copy of the site.</p>
-    <span class="flag fl hid" style="position:absolute;right:120px;top:100px">IMAGINE</span>
-
-    <!-- labels pinned to the 3D scene, placed every frame -->
-    <div class="chips hid"><span class="chip trusted">camera</span><span class="chip trusted">LiDAR</span><span class="chip trusted">radar</span></div>
-    <div class="chips fixc hid"><span class="chip trusted solid">after the fix</span></div>
-    <div class="tg hid"><span class="pill">light vehicle 0.94</span></div>
-    <svg class="pll hid" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true"><path class="ln-a" d="M0 0 L0 0" style="stroke-width:3"/></svg>
-    <div class="plab hid">printed patch</div>
-
-    <!-- the twin's readout -->
-    <div class="hud hid">
-      <div class="row"><span class="kicker">Mass</span><span class="v">620 t</span></div>
-      <div class="row"><span class="kicker">Speed</span><span class="v spd">40 km/h</span></div>
-    </div>
-
-    <!-- verdicts, top right -->
-    <div class="gpw">
-      <span class="pw w1"><span class="pill hid"></span></span><div class="gln g1 hid">In the twin, nobody gets hurt.</div>
-      <span class="pw w2"><span class="pill hid"></span></span><div class="gln g2 hid">Not on site.</div>
-    </div>
-    <div class="rw hid">
-      <svg width="46" height="28" viewBox="0 0 26 16" style="vertical-align:-3px;margin-right:12px" aria-hidden="true"><path d="M12 0 L0 8 L12 16 Z M26 0 L14 8 L26 16 Z" style="fill:var(--grey-1)"/></svg>rewind
-    </div>
-
-    <!-- beat 3: the reflection -->
-    <div class="refl">
-      <div class="l hid">AI is leaving the chat window.</div>
-      <div class="l hid">Agents act. Machines move.</div>
-      <div class="l hid">Every sense can be fooled.</div>
-      <div class="l b hid">Break it in test first.</div>
-    </div>
-
-    <div class="abs cite cr0 hid" style="left:120px;top:990px">Mass of a loaded 400 ton class haul truck: 623,690 kg (maker's spec sheet). Boeing 747-8 maximum take-off: 447,695 kg.</div>
-    <div class="abs cite cr1 hid" style="left:120px;top:990px">Real research: printed patches that hide people from detectors. Thys et al., 2019. Xu et al., 2020.</div>
+    <p class="ln l1 hid" style="top:290px">AI is leaving the chat window.</p>
+    <p class="ln l2 hid" style="top:430px">Agents act. Machines move.</p>
+    <p class="ln l3 hid" style="top:570px">Every sense can be fooled.</p>
+    <p class="ln b l4 hid" style="top:760px">Break it in test first.</p>
   </div>
-
-  <aside class="notes">Why does all this matter? Because AI is getting a body: physical AI. This is a mine in a digital twin, a full virtual copy of the site. A driverless haul truck, loaded, weighs over six hundred tonnes, more than a fully loaded jumbo jet. It sees with cameras, LiDAR and radar. It spots the ute and stops. [click] Same run, now with an attacker: a printed patch on the ute's tray, the T-shirt trick from earlier. The box is gone. The truck never brakes. We pause it a moment before impact. In the twin, nobody gets hurt. [click] Rewind. Retrain on that patch and replay the exact same attack. The box holds, the truck stops. Caught in the twin, not on site. [click] AI is leaving the chat window. Agents act for us, machines move among us, and they read, see and hear through the very senses we fooled tonight: text, images, sound, point clouds. So break it in test first, not on site.</aside>
+  <aside class="notes">Why does all this matter? Because AI is leaving the chat window. Agents act for us: they read our mail, move money, change settings. And physical AI moves mass: trucks, robots, machines on a site. Their senses are exactly the inputs we fooled tonight: text, images, sound, point clouds. [click] So find the weak spot first, in test, where nobody gets hurt.</aside>
 </section>
 <section class="slide" data-id="s28b" data-seconds="30" data-title="Try it yourself">
   <style>
@@ -4008,60 +3895,6 @@ Deck.register('s21', {
 </script>
 <script>
 (function () {
-  /* fixed noise so every render matches: A, ink, white and grey cells */
-  const paint = (cv, seed) => {
-    const g = cv.getContext('2d'), P = [FX.pal.A, FX.pal.A, FX.pal.K, '#FFFFFF', FX.pal.line];
-    let s = seed;
-    const rnd = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
-    for (let y = 0; y < 12; y++) for (let x = 0; x < 12; x++) { g.fillStyle = P[(rnd() * P.length) | 0]; g.fillRect(x, y, 1, 1); }
-  };
-  const ROWS = [372, 438, 504];
-  Deck.register('s24', {
-    enter: async (c) => {
-      const ts = c.qa('.ts'), tf = c.qa('.tf');
-      ts.forEach((t, k) => { paint(t, 7 + k * 101); paint(tf[k], 7 + k * 101); });
-      FX.in(c.q('.hl'), { dur: 700 });
-      FX.in(c.q('.mb.L'), { x: -30, y: 0, dur: 800, delay: 200 });
-      await FX.in(c.q('.mb.R'), { x: 30, y: 0, dur: 800, delay: 350 });
-      FX.fade(c.q('.cite'), 1, { dur: 500 });
-      await FX.in(c.qa('.wl, .wr'), { y: 8, dur: 450, stagger: 140 });
-    },
-    beats: [
-      async (c) => {
-        await FX.in(c.qa('.w0, .w1, .w2'), { y: 10, dur: 380, stagger: 90 });
-        const f = c.qa('.wf'), R = c.q('.mb.R');
-        FX.show(f);
-        await Promise.all(f.map((e, k) => FX.anim(e,
-          [{ left: '148px', top: ROWS[k] + 'px' }, { left: '800px', top: (ROWS[k] - 120) + 'px', offset: .5 }, { left: '1468px', top: ROWS[k] + 'px' }],
-          { dur: 1000, delay: k * 220, ease: FX.ease.inout })));
-        FX.anim(R, [{ borderColor: FX.pal.K }, { borderColor: FX.pal.A }], { dur: 300 });
-        await FX.pulse(R, { scale: 1.03, dur: 420 });
-      },
-      async (c) => {
-        await FX.in(c.q('.r18'), { y: 30, scale: .92, dur: 650, ease: FX.ease.back });
-        await FX.in(c.q('.c18'), { y: 10, dur: 450 });
-      },
-      async (c) => {
-        const tf = c.qa('.tf');
-        FX.in(c.q('.src'), { y: 8, dur: 350 });
-        await FX.in(c.qa('.ts'), { y: 0, scale: .6, dur: 320, stagger: 70 });
-        await FX.anim(c.q('.wall'), [{ opacity: 1, transform: 'scaleY(0)' }, { opacity: 1, transform: 'scaleY(1)' }], { dur: 420, ease: FX.ease.out });
-        FX.show(tf);
-        await Promise.all(tf.map((e, k) => {
-          const x0 = parseFloat(e.style.left);
-          return FX.anim(e, [{ left: x0 + 'px' }, { left: '1340px' }], { dur: 700, delay: k * 160, ease: 'cubic-bezier(.55,0,.9,.4)' })
-            .then(() => FX.dissolve(c, e, { n: 140, dur: 700, color: '#9a9a9a' }));
-        }));
-        await FX.in(c.q('.r0'), { y: 20, dur: 500 });
-        FX.in(c.q('.c0'), { y: 10, dur: 400 });
-        await FX.in(c.q('.end'), { y: 12, dur: 600, delay: 300 });
-      },
-    ],
-  });
-})();
-</script>
-<script>
-(function () {
   const INK = 'rgb(16,16,20)', A = 'rgb(224,48,30)', B = 'rgb(34,56,230)';
   /* card at (120,236); right column names start at x = 120 + 900 + 68 + 32; row k centre y = 236 + 116 + 100k + 38 */
   const NAME_X = 1120, rowY = k => 236 + 116 + 100 * k + 38;
@@ -4180,256 +4013,15 @@ Deck.register('s21', {
 })();
 </script>
 <script>
-(function () {
-  const bin = s => { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; };
-  /* the haul road is a bench of the pit, a circle of radius RL round the pit centre; s (metres along the road) grows to screen right */
-  const RL = 165, V0 = 40;                                    // lane radius (m), cruise speed shown in the readout (km/h)
-  const S0 = -42, S_STOP = -20, S_HIT = -9.6, S_UTE = 2.5;     // truck centre at the start, stopped, just before impact; ute centre
-  const lerp = (a, b, t) => a + (b - a) * t, sstep = t => t * t * (3 - 2 * t);
-  const inout = t => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-  const onRoad = (o, s) => { const p = -s / RL; o.position.set(RL * Math.sin(p), 0, RL * Math.cos(p)); o.rotation.set(0, p + Math.PI, 0); };
-
-  /* Tripo meshes (scene_twin.json, experiments/twin_assets.py): int16 cm vertices, uint8 texture luminance, uint16 triangles.
-     Unrolled to one vertex per corner so every face gets its own normal: flat shading. Decoded once, reused per visit. */
-  let RAW = null;
-  function raw() {
-    if (RAW) return RAW;
-    const S = window.SCENES && window.SCENES.twin; if (!S) return null;
-    const un = M => {
-      const v = new Int16Array(bin(M.v).buffer), c = bin(M.c), ix = new Uint16Array(bin(M.i).buffer), n = ix.length;
-      const pos = new Float32Array(n * 3), lum = new Float32Array(n);
-      for (let k = 0; k < n; k++) { const i = ix[k]; pos[k * 3] = v[i * 3] / 100; pos[k * 3 + 1] = v[i * 3 + 1] / 100; pos[k * 3 + 2] = v[i * 3 + 2] / 100; lum[k] = c[i] / 255; }
-      return { pos, lum, n };
-    };
-    RAW = { truck: un(S.meshes.truck), ute: un(S.meshes.ute), A: S.anchors };
-    return RAW;
-  }
-  function flatMesh(T, R, tone) {
-    const g = new T.BufferGeometry(), col = new Float32Array(R.n * 3);
-    for (let k = 0; k < R.n; k++) tone(R.lum[k], col, k * 3);
-    g.setAttribute('position', new T.BufferAttribute(R.pos, 3)); g.setAttribute('color', new T.BufferAttribute(col, 3));
-    g.computeVertexNormals();
-    const m = new T.Mesh(g, new T.MeshLambertMaterial({ vertexColors: true, side: T.DoubleSide }));
-    m.castShadow = true; m.receiveShadow = true; return m;
-  }
-  function tubeBox(T, min, max, color, r) {
-    const g = new T.Group(), m = new T.MeshBasicMaterial({ color });
-    const [x0, y0, z0] = min, [x1, y1, z1] = max;
-    const P = [[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1], [x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1]];
-    [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [0, 4], [1, 5], [2, 6], [3, 7]].forEach(([a, b]) => {
-      const A = new T.Vector3(...P[a]), B = new T.Vector3(...P[b]);
-      const cy = new T.Mesh(new T.CylinderGeometry(r, r, A.distanceTo(B), 6), m);
-      cy.position.copy(A).add(B).multiplyScalar(0.5);
-      cy.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), B.clone().sub(A).normalize());
-      g.add(cy);
-    });
-    return g;
-  }
-  /* the open pit: benches of a lathe profile (radius, height), faceted, with a blue survey grid so it reads as a simulation.
-     Grid UVs: plan view on the benches, (distance round the pit, height) on the steep faces, so the lines never smear. */
-  function pit(T, r) {
-    const prof = [[0, -72], [55, -72], [60, -60], [71, -60], [76, -48], [87, -48], [92, -36], [103, -36], [108, -24], [119, -24], [124, -12], [145, -12],
-      [150, 0], [150.6, 0], [152.4, 1.9], [154.6, 0], [180, 0], [185, 12], [196, 12], [201, 24], [700, 24]];
-    const lathe = new T.LatheGeometry(prof.map(([x, y]) => new T.Vector2(x, y)), 260, -1.3, 2.6).toNonIndexed();
-    const p = lathe.attributes.position, n = p.count, uv = new Float32Array(n * 2), col = new Float32Array(n * 3);
-    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-    for (let f = 0; f < n; f += 3) {
-      let ys = 0, rs = 0, y0 = Infinity, y1 = -Infinity;
-      for (let k = 0; k < 3; k++) { const x = p.getX(f + k), y = p.getY(f + k), z = p.getZ(f + k); ys += y; rs += Math.hypot(x, z); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
-      const rr = rs / 3, my = ys / 3, flat = y1 - y0 < 0.01, steep = y1 - y0 > 3;
-      let g = flat ? 0.9 : (my > 0 ? 0.8 : 0.74);
-      if (flat && Math.abs(my) < 0.01 && rr > 154.6 && rr < 180) g = 0.965;     // the road deck
-      else if (rr > 150.5 && rr < 154.7 && my > -0.01) g = 0.84;               // the safety berm
-      else if (flat && my > 23) g = 0.94;                                       // ground beyond the rim
-      g += (rnd() - 0.5) * 0.02;
-      for (let k = 0; k < 3; k++) {
-        const x = p.getX(f + k), y = p.getY(f + k), z = p.getZ(f + k), q = (f + k) * 2;
-        col.set([g, g, g * 1.012], (f + k) * 3);
-        if (steep) { uv[q] = Math.hypot(x, z) * Math.atan2(x, z) / 10; uv[q + 1] = y / 6; } else { uv[q] = x / 10; uv[q + 1] = z / 10; }
-      }
-    }
-    lathe.setAttribute('uv', new T.BufferAttribute(uv, 2)); lathe.setAttribute('color', new T.BufferAttribute(col, 3));
-    lathe.computeVertexNormals();
-    const gc = document.createElement('canvas'); gc.width = gc.height = 256;
-    const gg = gc.getContext('2d'); gg.fillStyle = '#ffffff'; gg.fillRect(0, 0, 256, 256);
-    gg.fillStyle = 'rgba(34,56,230,0.3)'; gg.fillRect(0, 0, 256, 2); gg.fillRect(0, 0, 2, 256);
-    const tex = new T.CanvasTexture(gc); tex.wrapS = tex.wrapT = T.RepeatWrapping; tex.anisotropy = r.capabilities.getMaxAnisotropy();
-    const m = new T.Mesh(lathe, new T.MeshLambertMaterial({ map: tex, vertexColors: true, side: T.DoubleSide }));
-    m.receiveShadow = true; return m;
-  }
-  /* the attacker's patch: blocky print in A with a little ink and white (seeded, so it is the same every visit) */
-  function patchTex(T) {
-    const c = document.createElement('canvas'); c.width = 54; c.height = 32;
-    const g = c.getContext('2d'), P = [FX.pal.A, FX.pal.A, FX.pal.A, FX.pal.A, FX.pal.K, '#ffffff', FX.pal.Atint];
-    let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-    g.fillStyle = FX.pal.A; g.fillRect(0, 0, 54, 32);
-    for (let k = 0; k < 150; k++) { g.fillStyle = P[(rnd() * P.length) | 0]; const w = 1 + ((rnd() * 4) | 0), h = 1 + ((rnd() * 3) | 0); g.fillRect((rnd() * 54) | 0, (rnd() * 32) | 0, w, h); }
-    const t = new T.CanvasTexture(c); t.magFilter = T.NearestFilter; t.minFilter = T.LinearFilter; t.generateMipmaps = false;
-    return t;
-  }
-
-  Deck.register('s28a', {
-    enter: async (c) => {
-      FX.in(c.q('.hl'), { dur: 700 });
-      FX.in(c.q('.fl'), { dur: 600, delay: 200 });
-      FX.in(c.q('.sb'), { dur: 600, delay: 300 });
-      const R = raw(), T = window.THREE, st = c.state;
-      if (!R || !T) { console.error('s28a: missing THREE or SCENES.twin'); return; }
-      const W = 1920, H = 1080, A = R.A;
-      const r = new T.WebGLRenderer({ canvas: c.q('canvas.gl'), antialias: true, preserveDrawingBuffer: true });
-      r.setPixelRatio(Math.min(2, (window.devicePixelRatio || 1) * Math.max(Deck.scale, 0.5)));
-      r.setSize(W, H, false); r.setClearColor(0xffffff, 1);
-      r.shadowMap.enabled = true; r.shadowMap.type = T.PCFSoftShadowMap;
-      const scene = new T.Scene(), cam = new T.PerspectiveCamera(23, W / H, 1, 1200);
-      scene.fog = new T.Fog(0xffffff, 95, 340);
-      c.onLeave(() => {
-        try {
-          scene.traverse(o => { if (o.geometry) o.geometry.dispose(); if (o.material) [].concat(o.material).forEach(m => { if (m.map) m.map.dispose(); m.dispose(); }); });
-          r.dispose(); r.forceContextLoss();
-        } catch (_) {}
-      });
-
-      scene.add(pit(T, r));
-      // tyre tracks worn into the haul road along the lane
-      [-3.3, 3.3].forEach(o => {
-        const g = new T.RingGeometry(RL + o - 0.7, RL + o + 0.7, 260, 1, Math.PI / 2 - 1.3, 2.6); g.rotateX(Math.PI / 2);
-        const m = new T.Mesh(g, new T.MeshLambertMaterial({ color: 0xB4B5BC, transparent: true, opacity: 0.55, depthWrite: false, side: T.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -2 }));
-        m.position.y = 0.03; m.receiveShadow = true; scene.add(m);
-      });
-      scene.add(new T.HemisphereLight(0xffffff, 0xB9BAC0, 0.72));
-      // a high sun from behind the truck, along the road: bench tops bright, bench faces in half shade, shadows fall ahead
-      const sun = new T.DirectionalLight(0xffffff, 0.62), aim = new T.Vector3(), pa = 10 / RL; onRoad({ position: aim, rotation: new T.Euler() }, -10);
-      sun.position.set(aim.x + Math.cos(pa) * 60 - Math.sin(pa) * 22, 90, aim.z - Math.sin(pa) * 60 - Math.cos(pa) * 22); sun.target.position.copy(aim);
-      sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048); sun.shadow.radius = 3; sun.shadow.bias = -0.0006;
-      Object.assign(sun.shadow.camera, { left: -50, right: 50, top: 50, bottom: -50, near: 10, far: 260 });
-      scene.add(sun, sun.target);
-
-      // the haul truck, its sensing fan and the readout chips
-      const truck = new T.Group();
-      truck.add(flatMesh(T, R.truck, (g, a, o) => { const v = 0.24 + 0.6 * g; a[o] = v; a[o + 1] = v * 1.005; a[o + 2] = v * 1.03; }));
-      const fx = A.truck.front_x, L = 40, ha = 0.24, fan = new T.Shape();
-      fan.moveTo(0, 0); fan.lineTo(L * Math.cos(ha), L * Math.sin(ha)); fan.absarc(0, 0, L, ha, -ha, true); fan.lineTo(0, 0);
-      const fg = new T.ShapeGeometry(fan, 24); fg.rotateX(-Math.PI / 2); fg.translate(fx, 0.12, 0);
-      const wedge = new T.Mesh(fg, new T.MeshBasicMaterial({ color: FX.pal.B, transparent: true, opacity: 0.11, depthWrite: false }));
-      const edge = new T.LineLoop(new T.BufferGeometry().setFromPoints(fan.getPoints(24).map(q => new T.Vector3(fx + q.x, 0.14, -q.y))),
-        new T.LineBasicMaterial({ color: FX.pal.B, transparent: true, opacity: 0.55 }));
-      truck.add(wedge, edge); scene.add(truck);
-
-      // the ute ahead, with its whip flag, the attacker's patch on its tray, and the detector's box
-      const ute = new T.Group(); onRoad(ute, S_UTE);
-      ute.add(flatMesh(T, R.ute, (g, a, o) => { const v = 0.6 + 0.36 * g; a[o] = v; a[o + 1] = v; a[o + 2] = v * 1.02; }));
-      const tr = A.ute.tray, dark = new T.MeshLambertMaterial({ color: 0x3A3B40 });
-      const pole = new T.Mesh(new T.CylinderGeometry(0.045, 0.045, 3.6, 6), dark); pole.position.set(tr.x0 + 0.15, tr.y + 1.8, tr.z0 + 0.1);
-      const fl = new T.BufferGeometry().setFromPoints([new T.Vector3(0, 0, 0), new T.Vector3(0, -0.6, 0), new T.Vector3(-1.0, -0.3, 0)]);
-      const flag = new T.Mesh(fl, new T.MeshBasicMaterial({ color: FX.pal.K, side: T.DoubleSide })); flag.position.set(tr.x0 + 0.15, tr.y + 3.6, tr.z0 + 0.1);
-      pole.castShadow = flag.castShadow = true; ute.add(pole, flag);
-      const pw = tr.x1 - tr.x0 - 0.1, pd = tr.z1 - tr.z0 - 0.05;
-      const patch = new T.Mesh(new T.PlaneGeometry(pw, pd), new T.MeshBasicMaterial({ map: patchTex(T), side: T.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4 }));
-      const pEnd = new T.Vector3((tr.x0 + tr.x1) / 2, tr.y + 0.06, (tr.z0 + tr.z1) / 2), pStart = pEnd.clone().add(new T.Vector3(10, 30, 18));
-      patch.visible = false; ute.add(patch);
-      const um = A.ute.min, uM = A.ute.max, pad = 0.3;
-      const box = tubeBox(T, [um[0] - pad, 0, um[2] - pad], [uM[0] + pad, uM[1] + 0.25, uM[2] + pad], 0x2238E6, 0.075);
-      box.visible = false; ute.add(box); scene.add(ute);
-
-      Object.assign(st, { r, scene, cam, truck, s: S0, v: V0, det: 0, blink: false, pf: 0, pull: 0, t0: performance.now(), spd: '' });
-      const vT = new T.Vector3(), vP = new T.Vector3(), tmp = new T.Vector3();
-      const toStage = (v, el, dx = 0, dy = 0) => { tmp.copy(v).project(cam); const x = (tmp.x + 1) / 2 * W + dx, y = (1 - tmp.y) / 2 * H + dy; if (el) { el.style.left = x + 'px'; el.style.top = y + 'px'; } return [x, y]; };
-      const tgEl = c.q('.tg'), chEl = c.q('.chips:not(.fixc)'), fxEl = c.q('.fixc'), plEl = c.q('.plab'), pll = c.q('.pll path'), spEl = c.q('.spd');
-      const camAt = t => {
-        const k = sstep(st.pull), sT = lerp(-8, -4, k), d = lerp(90, 230, k), el = lerp(0.5, 0.62, k), az = lerp(0.32, 0.28, k) + Math.sin(t * 0.21) * 0.015;
-        const p = -sT / RL; vT.set(RL * Math.sin(p), lerp(2.5, -18, k), RL * Math.cos(p));
-        const ux = -Math.sin(p), uz = -Math.cos(p), tx = -Math.cos(p), tz = Math.sin(p);            // toward the pit centre, along the road
-        const hx = ux * Math.cos(az) + tx * Math.sin(az), hz = uz * Math.cos(az) + tz * Math.sin(az);
-        cam.position.set(vT.x + hx * d * Math.cos(el), vT.y + d * Math.sin(el), vT.z + hz * d * Math.cos(el)); cam.lookAt(vT);
-      };
-      c.raf(now => {
-        const t = (now - st.t0) / 1000;
-        camAt(t); onRoad(truck, st.s);
-        box.visible = st.det > 0.5 && !st.blink;
-        patch.visible = st.pf > 0;
-        if (st.pf > 0) {
-          const e = inout(st.pf);
-          patch.position.lerpVectors(pStart, pEnd, e);
-          patch.rotation.set(-Math.PI / 2 + (1 - e) * 1.1, 0, (1 - e) * 3.0); patch.scale.setScalar(lerp(3.2, 1, e));
-        }
-        ute.updateMatrixWorld(); truck.updateMatrixWorld();
-        r.render(scene, cam);
-        // pinned labels
-        toStage(vP.set(uM[0] - 0.6, uM[1] + 0.9, 0).applyMatrix4(ute.matrixWorld), tgEl);
-        const [cx, cy] = toStage(vP.set(2.2, A.truck.max[1] + 2.4, 0).applyMatrix4(truck.matrixWorld), chEl);
-        fxEl.style.left = cx + 'px'; fxEl.style.top = cy + 'px';
-        const [px, py] = toStage(vP.copy(pEnd).applyMatrix4(ute.matrixWorld));
-        plEl.style.left = (px + 70) + 'px'; plEl.style.top = (py + 92) + 'px';
-        pll.setAttribute('d', `M${px + 8} ${py + 10} L${px + 62} ${py + 98}`);
-        const s = Math.round(st.v) + ' km/h'; if (s !== st.spd) { st.spd = s; spEl.textContent = s; }
-      });
-      await FX.fade(c.q('.gl'), 1, { dur: 600 });
-      FX.in(c.q('.hud'), { y: 10, dur: 500 });
-      FX.in(c.q('.cr0'), { y: 0, dur: 500, delay: 300 });
-      FX.in(chEl, { y: 8, dur: 450, delay: 200 });
-      const run = drive(st, S0, S_STOP, 2600, 0.55);
-      await FX.wait(650);
-      st.det = 1; FX.in(tgEl, { y: 8, dur: 350 });
-      await run;
-    },
-    beats: [
-      /* 1: the same run with an attacker: a printed patch lands on the tray, the box is gone, the truck never brakes */
-      async (c) => {
-        const st = c.state; if (!st.r) return;
-        FX.fade(c.qa('.chips:not(.fixc), .cr0'), 0, { dur: 300 });
-        const back = FX.tween(700, t => { st.s = lerp(S_STOP, S0, t); st.v = 0; }, inout);
-        await FX.tween(1100, t => { st.pf = t; }, t => t);
-        FX.fade(c.q('.pll'), 1, { dur: 250 });
-        FX.in(c.q('.plab'), { x: 10, y: 0, dur: 350 });
-        await back;
-        for (let k = 0; k < 3; k++) { st.blink = true; await FX.wait(110); st.blink = false; await FX.wait(110); }
-        st.det = 0;
-        const tg = c.q('.tg'); tg.classList.add('lost'); tg.querySelector('.pill').textContent = 'not detected';
-        FX.pulse(tg, { scale: 1.08, dur: 400 });
-        FX.in(c.q('.cr1'), { y: 0, dur: 500 });
-        c.q('.spd').classList.add('attack');
-        await FX.wait(250);
-        await drive(st, S0, S_HIT, 2000, 0);
-        await FX.stamp(c.q('.w1 .pill'), 'NO BRAKE', 'attackp');
-        await FX.in(c.q('.g1'), { y: 8, dur: 450 });
-      },
-      /* 2: rewind, fix, replay the exact same attack: the box holds and the truck stops */
-      async (c) => {
-        const st = c.state; if (!st.r) return;
-        FX.fade(c.qa('.w1, .g1'), 0, { dur: 300 });
-        FX.in(c.q('.rw'), { y: 0, dur: 300 });
-        await FX.tween(750, t => { st.s = lerp(S_HIT, S0, t); st.v = 0; }, inout);
-        await FX.fade(c.q('.rw'), 0, { dur: 250 });
-        c.q('.spd').classList.remove('attack');
-        await FX.in(c.q('.fixc'), { y: 8, dur: 400 });
-        st.det = 1;
-        const tg = c.q('.tg'); tg.classList.remove('lost'); tg.querySelector('.pill').textContent = 'light vehicle 0.91';
-        FX.pulse(tg, { scale: 1.08, dur: 400 });
-        await drive(st, S0, S_STOP, 2500, 0.55);
-        await FX.stamp(c.q('.w2 .pill'), 'CAUGHT IN THE TWIN', 'trustp');
-        await FX.in(c.q('.g2'), { y: 8, dur: 450 });
-      },
-      /* 3: the reflection over the dimmed twin */
-      async (c) => {
-        const st = c.state;
-        FX.fade(c.qa('.w2, .g2, .fixc, .tg, .plab, .pll, .hud, .cr1, .fl, .sb'), 0, { dur: 400 });
-        FX.tween(1700, t => { st.pull = t; }, inout);
-        await FX.fade(c.q('.dim'), 0.86, { dur: 900 });
-        await FX.in(c.qa('.refl .l'), { y: 18, dur: 600, stagger: 280 });
-      },
-    ],
-  });
-
-  /* drive the truck from a to b in dur ms; brake = share of the time spent braking to a stop (0 = it never brakes) */
-  function drive(st, a, b, dur, brake) {
-    const tb = 1 - brake, k = tb + brake / 2;
-    return FX.tween(dur, t => {
-      let f, v;
-      if (!brake || t <= tb) { f = t / k; v = 1; } else { const u = (t - tb) / brake; f = (tb + brake * (u - u * u / 2)) / k; v = 1 - u; }
-      st.s = a + (b - a) * f; st.v = V0 * v;
-    }, t => t);
-  }
-})();
+Deck.register('s28a', {
+  enter: async (c) => {
+    FX.in(c.q('.hl'), { dur: 600 });
+    await FX.in(c.qa('.l1, .l2, .l3'), { y: 18, dur: 600, delay: 250, stagger: 450 });
+  },
+  beats: [
+    async (c) => { await FX.in(c.q('.l4'), { y: 18, dur: 700 }); },
+  ],
+});
 </script>
 <script>
 Deck.register('s28b', {
