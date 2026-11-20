@@ -179,80 +179,6 @@ body.presenting #presenter{display:block}
 </style></head>
 <body>
 <div id="stage">
-<section class="slide" data-id="s01" data-seconds="56" data-title="Would the AI pay?">
-  <style>
-    .s01 .ph1{position:absolute;left:0;top:0;width:806px;height:1080px;overflow:hidden;background:#3a3f46}
-    .s01 .ph1 img{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
-    .s01 .ph1 .i0{transform-origin:40% 60%}
-    .s01 .st{position:absolute;left:76.57px;top:502.2px;width:153.14px;height:153.14px;transform-origin:0 0;transform:skewY(18.43deg);z-index:3}
-    .s01 .st img,.s01 .zoom img{display:block;width:100%;height:100%}
-    .s01 .lead{stroke-width:3}
-    .s01 .zoom{position:absolute;left:318px;top:46px;width:400px;height:400px;transform-origin:0 0;z-index:4}
-
-    .s01 .claim{position:absolute;left:920px;top:84px;width:880px;border-top:8px solid var(--ink);padding-top:26px}
-    .s01 .claim .kicker{font-size:26px}
-    .s01 .claim .who{margin-top:18px;font:500 44px/1.1 var(--sans);letter-spacing:-.02em;color:var(--ink)}
-    .s01 .claim .who span{color:var(--grey-1)}
-
-    .s01 .v{position:absolute;left:920px;top:318px;width:880px;transform-origin:0 0}
-    .s01 .v .num{display:block;margin-left:-14px;transform-origin:12% 80%;white-space:nowrap}
-    .s01 .v .pw{margin-top:40px;height:104px}
-    .s01 .v .pill{font-size:60px;padding:20px 34px 18px;border-width:3px;letter-spacing:.06em}
-    .s01 .v .cons{margin-top:34px;font:600 56px/1 var(--sans);letter-spacing:-.025em}
-
-    .s01 .was{position:absolute;left:920px;top:248px;font:500 34px/1 var(--mono);letter-spacing:.04em;color:var(--grey-1);white-space:nowrap}
-    .s01 .was .strike{position:absolute;left:-8px;right:-8px;top:50%;height:4px;margin-top:-2px;background:var(--a);transform-origin:0 50%;transform:scaleX(0)}
-    .s01 .ask{position:absolute;left:920px;top:342px;font:600 100px/1.02 var(--sans);letter-spacing:-.045em;color:var(--ink);white-space:nowrap}
-
-    .s01 .take{left:920px}
-    .s01 .prov{position:absolute;left:920px;top:906px}
-    .s01 .credit{position:absolute;left:920px;top:984px;white-space:nowrap}
-  </style>
-  <div class="s01">
-    <!-- the photo, flush to the left edge, full stage height -->
-    <div class="ph1 hid">
-      <img class="i0" src="assets/parcel/intact.jpg" alt="An undamaged cardboard parcel on a doormat in front of a door">
-      <img class="i1 hid" src="assets/parcel/dented.jpg" alt="The same parcel with a white sticker on the front that reads DENTED BOX">
-    </div>
-    <div class="st hid"><img src="assets/parcel/st_dented.png" alt=""></div>
-    <svg class="abs" style="left:0;top:0;z-index:4;pointer-events:none" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden="true">
-      <path class="ln-a draw lead" d="M76.6 502.2 L318 46"/>
-      <path class="ln-a draw lead" d="M229.7 706.5 L718 446"/>
-    </svg>
-    <div class="zoom hid"><img src="assets/parcel/st_dented.png" alt="Magnified sticker: DENTED BOX"></div>
-
-    <!-- the claim -->
-    <div class="claim hid">
-      <div class="kicker">Refund claim</div>
-      <div class="who"><span>Customer:</span> arrived damaged</div>
-    </div>
-
-    <!-- verdict before the sticker -->
-    <div class="v v0 hid">
-      <div class="num num-xl trusted n0" style="font-variant-numeric:lining-nums tabular-nums">98%</div>
-      <div class="pw"><span class="pill hid p0">INTACT</span></div>
-      <div class="cons c0 hid">Claim rejected</div>
-    </div>
-
-    <!-- beat 1 -->
-    <div class="was hid">98% INTACT<span class="strike"></span></div>
-    <div class="ask hid">Does the AI<br>pay now?</div>
-
-    <!-- verdict after the sticker -->
-    <div class="v v1 hid">
-      <div class="num num-xl attack n1 hid">75%</div>
-      <div class="pw"><span class="pill hid p1">DAMAGED</span></div>
-      <div class="cons attack c1 hid">Refund approved</div>
-    </div>
-
-    <!-- beat 3 -->
-    <h1 class="hl take hid">Same box. One <em class="attack">sticker</em>.</h1>
-    <div class="prov hid"><span class="flag flag-b">REAL RESULT</span></div>
-    <div class="cite credit hid">Staged photo. Real API call: Gemini Decision 1. Not any retailer's system.</div>
-  </div>
-
-  <aside class="notes">Before I tell you who I am, a quick game. A customer says their parcel arrived damaged and uploads this photo to claim a refund. An AI reviews the claim. You can see the box is fine, and so can the model: intact, 98 percent sure. Claim rejected. [click] Now the customer adds one sticker and takes the photo again. Nothing else changes. Raise your hand if you think the AI pays out now. [click] Damaged, 75 percent. Refund approved. [click] Same box, one sticker. This is a real commercial decision model and a real API call, on a photo I staged. Keep this parcel in mind. It comes back.</aside>
-</section>
 <section class="slide" data-id="s02" data-bleed="a" data-seconds="32" data-title="Breaking AI">
   <style>
     .s02 .word{left:108px;top:236px;margin:0;font:600 316px/1 var(--sans);letter-spacing:-.045em;white-space:nowrap;color:#fff}
@@ -278,7 +204,7 @@ body.presenting #presenter{display:block}
     </div>
   </div>
 
-  <aside class="notes">That is what this talk is about. [click] Breaking AI: how we do it, why it is so easy, and what to do about it. [click] I am Camilo. My PhD was in AI security and safety, which is a polite way of saying I spent years making neural networks misbehave on purpose. Today I work at AWS. Everything you will see is public research or my own experiments, and the opinions are mine, not my employer's.</aside>
+  <aside class="notes">AI systems can be fooled, and it is easier than you think. [click] Breaking AI: how we do it, why it is so easy, and what to do about it. [click] I am Camilo. My PhD was in AI security and safety, which is a polite way of saying I spent years making neural networks misbehave on purpose. Today I work at AWS. Everything you will see is public research or my own experiments, and the opinions are mine, not my employer's.</aside>
 </section>
 <section class="slide" data-id="s03" data-seconds="42" data-title="2013: noise you cannot see">
   <style>
@@ -3186,62 +3112,6 @@ print(r.json()[<span class="s">"answers"</span>][<span class="s">"claim"</span>]
   Deck.boot = boot;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else setTimeout(boot, 0);
 })();
-</script>
-<script>
-Deck.register('s01', {
-  enter: async (c) => {
-    const ph = c.q('.ph1');
-    FX.show(ph);
-    FX.anim(ph, [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }], { dur: 900, ease: FX.ease.inout });
-    FX.anim(c.q('.i0'), [{ transform: 'scale(1.08)' }, { transform: 'scale(1)' }], { dur: 1800, ease: FX.ease.out });
-    await FX.in(c.q('.claim'), { y: 16, dur: 600, delay: 450 });
-    // the model reads the photo, then answers
-    FX.sweep(ph, { dur: 800 });
-    FX.fade(c.q('.v0'), 1, { dur: 200 });
-    await FX.count(c.q('.n0'), 98, { dur: 900, suf: '%' });
-    await FX.stamp(c.q('.p0'), 'INTACT', 'inkp');
-    await FX.in(c.q('.c0'), { y: 10, dur: 400 });
-  },
-  beats: [
-    // 1: one sticker lands on the box; the photo becomes the exact image sent to the model
-    async (c) => {
-      FX.anim(c.q('.v0'), [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translate(0px,-60px) scale(.2)' }], { dur: 500, ease: FX.ease.inout });
-      FX.in(c.q('.was'), { y: 12, dur: 500, delay: 300 });
-      const st = c.q('.st');
-      await FX.anim(st, [
-        { opacity: 0, transform: 'translate(660px,-680px) rotate(34deg) scale(2.6) skewY(0deg)' },
-        { opacity: 1, offset: 0.12 },
-        { opacity: 1, transform: 'translate(0px,0px) rotate(0deg) scale(1) skewY(18.43deg)' }],
-        { dur: 780, ease: 'cubic-bezier(.2,.8,.3,1.06)' });
-      FX.fade(c.q('.i1'), 1, { dur: 250 }).then(() => FX.hide(st));
-      FX.draw(c.qa('.lead'), { dur: 450, delay: 120 });
-      FX.anim(c.q('.zoom'), [
-        { opacity: 0, transform: 'translate(-241.4px,456.2px) scale(.383)' },
-        { opacity: 1, offset: 0.2 },
-        { opacity: 1, transform: 'translate(0px,0px) scale(1)' }], { dur: 600, delay: 120, ease: FX.ease.out });
-      await FX.in(c.q('.ask'), { y: 16, dur: 500, delay: 380 });
-    },
-    // 2: the verdict flips, with weight
-    async (c) => {
-      FX.fade(c.q('.ask'), 0, { dur: 250 });
-      await FX.sweep(c.q('.ph1'), { dur: 650 });
-      const v1 = c.q('.v1');
-      FX.show(v1);
-      await FX.anim(c.q('.n1'), [{ opacity: 0, transform: 'scale(1.55)' }, { opacity: 1, transform: 'scale(1)' }], { dur: 340, ease: 'cubic-bezier(.55,0,.85,.3)' });
-      FX.anim(v1, [{ transform: 'translateX(0px)' }, { transform: 'translateX(-18px)' }, { transform: 'translateX(13px)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(0px)' }], { dur: 380, ease: FX.ease.lin });
-      FX.anim(c.q('.claim'), [{ borderTopColor: FX.pal.K }, { borderTopColor: FX.pal.A }], { dur: 300 });
-      FX.anim(c.q('.was .strike'), [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { dur: 380, ease: FX.ease.out });
-      await FX.stamp(c.q('.p1'), 'DAMAGED', 'attackp');
-      await FX.in(c.q('.c1'), { y: 10, dur: 350 });
-    },
-    // 3: same box, one sticker
-    async (c) => {
-      await FX.out(c.q('.claim'), { dur: 350 });
-      FX.in(c.q('.take'), { y: 14, dur: 600 });
-      await FX.in(c.qa('.prov, .credit'), { y: 8, dur: 500, delay: 250, stagger: 120 });
-    },
-  ],
-});
 </script>
 <script>
 Deck.register('s02', {

@@ -1,6 +1,6 @@
 # Breaking AI
 
-A 25-minute talk on adversarial attacks against AI systems: their origin in 2013, attacks across every modality (text, images, audio, video, LiDAR), modern GenAI and LLM attacks (data poisoning, memorization, prompt injection), decision models, and why security and safety belong in your evals. 38 slides, about 30 minutes.
+A 25-minute talk on adversarial attacks against AI systems: their origin in 2013, attacks across every modality (text, images, audio, video, LiDAR), modern GenAI and LLM attacks (data poisoning, memorization, prompt injection), decision models, and why security and safety belong in your evals. 37 slides, about 29 minutes.
 
 ## Present
 
