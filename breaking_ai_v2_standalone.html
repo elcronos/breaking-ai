@@ -4989,7 +4989,7 @@ Deck.register('s16b', {
   const swap = async (c, from, to) => {
     await FX.fade(c.q('.k' + from), 0, { dur: 280 });
     c.q('.k' + from).style.visibility = 'hidden';
-    c.q('.k' + to).style.visibility = 'visible';
+    c.q('.k' + to).style.visibility = 'inherit';   /* inherit, not visible: a visible child would show through the hidden slide */
     tab(c, to);
   };
   Deck.register('s17b', {
