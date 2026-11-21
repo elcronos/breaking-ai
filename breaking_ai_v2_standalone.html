@@ -2587,7 +2587,16 @@ body.presenting #presenter{display:block}
     Promise.all(list(el).map((e, k) => {
       const a = e.animate(kf, { duration: D(dur), easing: ease, delay: Deck.instant ? 0 : D(delay + k * stagger), fill: 'forwards' });
       running.add(a);
-      return a.finished.then(() => { try { a.commitStyles(); } catch (_) {} a.cancel(); }).catch(() => {})
+      const last = Array.isArray(kf) ? kf[kf.length - 1] : null;
+      /* keep the end state. commitStyles can throw or silently do nothing on some mobile browsers, which left
+         delayed elements hidden after cancel(); write the last keyframe inline when that happens */
+      const keep = () => { if (last) for (const p in last) if (p !== 'offset' && p !== 'easing' && p !== 'composite') e.style[p] = last[p]; };
+      return a.finished.then(() => {
+        let ok = true; try { a.commitStyles(); } catch (_) { ok = false; }
+        if (!ok) keep();
+        a.cancel();
+        if (last && last.opacity !== undefined && Math.abs(parseFloat(getComputedStyle(e).opacity) - parseFloat(last.opacity)) > 0.01) keep();
+      }).catch(() => {})
         .finally(() => running.delete(a));
     }));
   FX.in = (el, { y = 12, x = 0, scale = 1, dur = 600, delay = 0, stagger = 0, ease = FX.ease.out } = {}) =>
