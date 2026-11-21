@@ -6,7 +6,7 @@ A 25-minute talk on adversarial attacks against AI systems: their origin in 2013
 
 [![Breaking AI promo video](promo/breaking_ai_promo_cover.jpg)](promo/breaking_ai_promo.mp4)
 
-**[Watch or download the promo video (MP4, 75 s, 4:5)](https://github.com/elcronos/breaking-ai-talk/raw/main/promo/breaking_ai_promo.mp4)**
+**[Watch or download the teaser (MP4, 45 s, 4:5)](https://github.com/elcronos/breaking-ai-talk/raw/main/promo/breaking_ai_promo.mp4)** · [extended version (75 s)](https://github.com/elcronos/breaking-ai-talk/raw/main/promo/breaking_ai_promo_full.mp4)
 
 Breaking AI: How to Hack Intelligent Systems. AI Disrupt Summit 2026, West Tech Fest. Saturday 12 December 2026, 11:05 AM, Curtin University, Bentley. Every attack in the video is based on real research or the speaker's own experiments; 3D scenes are labelled as illustrations. Music generated with ElevenLabs.
 
