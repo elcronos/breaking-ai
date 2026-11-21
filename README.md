@@ -1,6 +1,14 @@
 # Breaking AI
 
-A 25-minute talk on adversarial attacks against AI systems: their origin in 2013, attacks across every modality (text, images, audio, video, LiDAR), modern GenAI and LLM attacks (data poisoning, memorization, prompt injection), decision models, and why security and safety belong in your evals. 31 slides, about 22 minutes.
+A 25-minute talk on adversarial attacks against AI systems: their origin in 2013, attacks across every modality (text, images, audio, video, LiDAR), modern GenAI and LLM attacks (data poisoning, memorization, prompt injection), decision models, and why security and safety belong in your evals. 31 slides, about 22 minutes, grouped by type of AI system: classifiers and decision models, physical attacks, transformers and agents, then defences.
+
+## Promo video
+
+[![Breaking AI promo video](promo/breaking_ai_promo_cover.jpg)](promo/breaking_ai_promo.mp4)
+
+**[Watch or download the promo video (MP4, 69 s, 4:5)](https://github.com/elcronos/breaking-ai-talk/raw/main/promo/breaking_ai_promo.mp4)**
+
+Breaking AI: How to Hack Intelligent Systems. AI Disrupt Summit 2026, West Tech Fest. Saturday 12 December 2026, 11:05 AM, Curtin University, Bentley. Every attack in the video is based on real research or the speaker's own experiments; 3D scenes are labelled as illustrations. Music generated with ElevenLabs.
 
 ## Present
 
