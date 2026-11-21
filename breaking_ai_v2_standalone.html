@@ -2592,10 +2592,10 @@ body.presenting #presenter{display:block}
          delayed elements hidden after cancel(); write the last keyframe inline when that happens */
       const keep = () => { if (last) for (const p in last) if (p !== 'offset' && p !== 'easing' && p !== 'composite') e.style[p] = last[p]; };
       return a.finished.then(() => {
-        let ok = true; try { a.commitStyles(); } catch (_) { ok = false; }
-        if (!ok) keep();
+        /* write the end state inline ourselves, then let commitStyles refine it where supported */
+        keep();
+        try { a.commitStyles(); } catch (_) {}
         a.cancel();
-        if (last && last.opacity !== undefined && Math.abs(parseFloat(getComputedStyle(e).opacity) - parseFloat(last.opacity)) > 0.01) keep();
       }).catch(() => {})
         .finally(() => running.delete(a));
     }));
