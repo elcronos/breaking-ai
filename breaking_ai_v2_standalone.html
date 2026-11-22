@@ -368,7 +368,7 @@ body.presenting #presenter{display:block}
     .s18 .q{margin:0;font:500 56px/1.12 var(--sans);letter-spacing:-.02em;color:#fff}
     .s18 .rev{margin:28px 0 0;font:400 50px/1.28 var(--sans);letter-spacing:-.01em;color:var(--K)}
     .s18 .mlab{position:absolute;left:880px;top:394px;width:480px;text-align:center;font:500 30px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff}
-    .s18 .ocap{position:absolute;left:1434px;top:676px;font:600 40px/1 var(--sans);letter-spacing:-.01em;color:#fff;white-space:nowrap}
+    .s18 .ocap{position:absolute;left:1434px;top:640px;font:600 40px/1 var(--sans);letter-spacing:-.01em;color:#fff;white-space:nowrap}
     .s18 .chips{position:absolute;left:120px;top:918px;display:flex;align-items:center;gap:16px}
     .s18 .chips .kicker{color:#fff}
     .s18 .chips .chip{font-size:28px}
@@ -402,13 +402,14 @@ body.presenting #presenter{display:block}
     <div class="chips hid"><span class="kicker">tested in this talk:</span><span class="chip">Gemini Decision 1</span><span class="chip">TypeSafe Jev</span></div>
 
     <!-- the number and the action -->
-    <div class="abs num outp onum hid" style="left:1428px;top:486px;font-size:190px">0.02</div>
-    <div class="outp ocap hid">damaged</div>
+    <div class="abs outp okick hid" style="left:1432px;top:446px;font:500 28px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff">the model picks</div>
+    <div class="abs num outp onum hid" style="left:1428px;top:492px;font-size:92px;white-space:nowrap">intact</div>
+    <div class="outp ocap hid">98% sure</div>
     <div class="abs act oact hid" style="left:1430px;top:812px"><span class="pill trustp" style="font-size:36px">REFUND REJECTED</span></div>
     <div class="abs cite cr hid" style="left:120px;top:988px">Staged photo. Real API call: Gemini Decision 1. Not any retailer's system.</div>
   </div>
 
-  <aside class="notes">That was 2013. In 2026 the trendy thing is decision models: you send a photo or a document, it answers one question. Do they suffer the same problem? A customer claims a refund with this photo of the parcel. Is it damaged? 2 percent. Rejected. [click] A tablet from a factory line: defective? 84 percent, yes. [click] An invoice: what kind of document? Invoice, fully sure. [click] A review: positive? No, neutral, 87 percent. [click] Nobody chats with it. It just decides, thousands of times a day. So I spent my own API credits trying to make two of them decide wrong.</aside>
+  <aside class="notes">That was 2013. In 2026 the trendy thing is decision models: you send a photo or a document, it answers one question. Do they suffer the same problem? A customer claims a refund with this photo of the parcel. Is it damaged? The model picks intact, 98 percent sure. Refund rejected. [click] A tablet from a factory line: defective, 84 percent sure. [click] An invoice: what kind of document? Invoice, fully sure. [click] A review: positive, neutral or negative? Neutral, 87 percent sure. [click] Nobody chats with it. It just decides, thousands of times a day. So I spent my own API credits trying to make two of them decide wrong.</aside>
 </section>
 <section class="slide" data-id="s05" data-seconds="35" data-title="Two words flip a verdict">
   <style>
@@ -3332,10 +3333,10 @@ Deck.register('s91', {
 (function () {
   /* one question per input; numbers are real measured values from later slides (s21, s23, s05) */
   const IN = [
-    { q: 'Is the parcel damaged?', n: '0.02', w: 'damaged', cr: 'Staged photo. Real API call: Gemini Decision 1. Not any retailer\'s system.' },
-    { q: 'Is this tablet defective?', n: '0.84', w: 'defective', cr: 'MVTec AD (Bergmann et al., CVPR 2019). Real API call: Gemini Decision 1.' },
-    { q: 'What kind of document is this?', n: '1.00', w: 'invoice', cr: 'Real API call: Gemini Decision 1.' },
-    { q: 'Is this review positive?', n: '0.87', w: 'neutral', cr: 'Real API call: Gemini Decision 1.' },
+    { q: 'Is the parcel damaged?', n: 'intact', w: '98% sure', cr: 'Staged photo. Real API call: Gemini Decision 1. Not any retailer\'s system.' },
+    { q: 'Is this tablet defective?', n: 'defective', w: '84% sure', cr: 'MVTec AD (Bergmann et al., CVPR 2019). Real API call: Gemini Decision 1.' },
+    { q: 'What kind of document is this?', n: 'invoice', w: '100% sure', cr: 'Real API call: Gemini Decision 1.' },
+    { q: 'Is this review positive, neutral or negative?', n: 'neutral', w: '87% sure', cr: 'Real API call: Gemini Decision 1.' },
   ];
   const show = async (c, k) => {
     const d = IN[k], q = c.q('.q'), outs = [c.q('.q'), c.q('.onum'), c.q('.ocap'), c.q('.cr')];
@@ -3357,6 +3358,7 @@ Deck.register('s91', {
       FX.in(c.q('.mlab'), { y: 10, dur: 450, delay: 150 });
       await FX.in(c.q('.mbox'), { y: 0, scale: 0.96, dur: 500 });
       FX.draw(c.q('.w-2'), { dur: 260 }); await FX.draw(c.q('.h-2'), { dur: 160, delay: 200 });
+      FX.in(c.q('.okick'), { y: 8, dur: 400 });
       FX.in(c.q('.onum'), { y: 16, scale: 0.92, dur: 600, ease: FX.ease.back });
       await FX.in(c.q('.ocap'), { y: 8, dur: 450, delay: 150 });
       FX.draw(c.q('.w-3'), { dur: 260 }); await FX.draw(c.q('.h-3'), { dur: 160, delay: 200 });
