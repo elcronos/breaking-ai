@@ -206,6 +206,25 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">AI systems can be fooled, and it is easier than you think. [click] Breaking AI: how we do it, why it is so easy, and what to do about it. [click] I am Camilo. My PhD was in AI security and safety, which is a polite way of saying I spent years making neural networks misbehave on purpose. Today I work at AWS. Everything you will see is public research or my own experiments, and the opinions are mine, not my employer's.</aside>
 </section>
+<section class="slide" data-id="s91" data-bleed="k" data-seconds="4" data-title="Part 1: Classifiers">
+  <style>
+    .s91 .pk{position:absolute;left:120px;top:250px;font:500 34px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--A)}
+    .s91 .pt1{position:absolute;left:120px;top:320px;width:1680px;margin:0;font:600 150px/1.02 var(--sans);letter-spacing:-.04em;color:#fff}
+    .s91 .ps{position:absolute;left:124px;top:520px;width:1500px;margin:0;font:400 44px/1.25 var(--sans);color:var(--grey-1)}
+    .s91 .tr{position:absolute;left:120px;top:860px;width:1680px;display:flex;gap:24px}
+    .s91 .pt{flex:1;border-top:4px solid rgba(255,255,255,.22);padding-top:18px;color:rgba(255,255,255,.45);font:500 28px/1.2 var(--sans)}
+    .s91 .pt .pn{display:block;font:500 24px/1 var(--mono);letter-spacing:.12em;margin-bottom:10px}
+    .s91 .pt.on{border-top-color:var(--A);color:#fff}
+    .s91 .pt.on .pn{color:var(--A)}
+  </style>
+  <div class="s91">
+    <div class="pk hid">Part 1 of 4</div>
+    <h1 class="pt1 hid">Classifiers</h1>
+    <p class="ps hid">From 2013 research to the decision models of 2026.</p>
+    <div class="tr hid"><div class="pt on"><span class="pn">01</span><span class="px">Classifiers</span></div><div class="pt"><span class="pn">02</span><span class="px">Physical attacks</span></div><div class="pt"><span class="pn">03</span><span class="px">Transformers, embeddings, agents</span></div><div class="pt"><span class="pn">04</span><span class="px">Defences</span></div></div>
+  </div>
+  <aside class="notes">Part one: classifiers.</aside>
+</section>
 <section class="slide" data-id="s03" data-seconds="40" data-title="2013: noise you cannot see">
   <style>
     .s03 .crop{position:absolute;overflow:hidden;border-radius:var(--r);width:500px;height:500px;top:270px}
@@ -831,6 +850,25 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">I let a search try random stickers on the parcel for 809 questions. Best: 31 percent. Still rejected. So I stopped being clever. [click] I printed two words on a white sticker. Zero questions. Dented box: 75 percent, refund approved. [click] And it is not the sticker, it is what it says. Fragile: 3 percent. Torn box: 69. [click] The model was asked to check the box for signs of damage. It did not look at the box. It read the label. These classifiers may not be doing what you asked. Remember five stars? [click] And yes, today someone could just generate a photo of a damaged box. Detecting that is a different problem. The point here: the model read the label, not the box.</aside>
 </section>
+<section class="slide" data-id="s92" data-bleed="k" data-seconds="4" data-title="Part 2: Physical attacks">
+  <style>
+    .s92 .pk{position:absolute;left:120px;top:250px;font:500 34px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--A)}
+    .s92 .pt1{position:absolute;left:120px;top:320px;width:1680px;margin:0;font:600 150px/1.02 var(--sans);letter-spacing:-.04em;color:#fff}
+    .s92 .ps{position:absolute;left:124px;top:520px;width:1500px;margin:0;font:400 44px/1.25 var(--sans);color:var(--grey-1)}
+    .s92 .tr{position:absolute;left:120px;top:860px;width:1680px;display:flex;gap:24px}
+    .s92 .pt{flex:1;border-top:4px solid rgba(255,255,255,.22);padding-top:18px;color:rgba(255,255,255,.45);font:500 28px/1.2 var(--sans)}
+    .s92 .pt .pn{display:block;font:500 24px/1 var(--mono);letter-spacing:.12em;margin-bottom:10px}
+    .s92 .pt.on{border-top-color:var(--A);color:#fff}
+    .s92 .pt.on .pn{color:var(--A)}
+  </style>
+  <div class="s92">
+    <div class="pk hid">Part 2 of 4</div>
+    <h1 class="pt1 hid">Physical attacks</h1>
+    <p class="ps hid">The attack leaves the screen.</p>
+    <div class="tr hid"><div class="pt"><span class="pn">01</span><span class="px">Classifiers</span></div><div class="pt on"><span class="pn">02</span><span class="px">Physical attacks</span></div><div class="pt"><span class="pn">03</span><span class="px">Transformers, embeddings, agents</span></div><div class="pt"><span class="pn">04</span><span class="px">Defences</span></div></div>
+  </div>
+  <aside class="notes">Part two: physical attacks.</aside>
+</section>
 <section class="slide" data-id="s06" data-seconds="50" data-title="A sticker the car believes">
   <style>
     .s06 .gl,.s06 .dim{position:absolute;left:0;top:0;width:1920px;height:1080px}
@@ -1339,6 +1377,25 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Last, a robot that touches people: a research da Vinci surgical robot, at UC Berkeley and KTH. A research AI drives the arms through the endoscope camera and picks dead tissue off a pad. Nine out of ten. [click] Now the lighting in the video changes. The arm misses. Zero out of ten. Across 620 physical experiments, success fell 61 percent on average. Changing the lighting is not necessarily an attack. But how robust is the system to it? That is exactly what an attacker will probe. No attack on a clinical robot has been reported. [click] If you don't test it yourself, someone else will. A digital twin makes testing cheap: thousands of lighting changes, before any patient. My proposal, not the paper. [click] Surgeons still hold the controls. And the newest AI, the models that read, write and act, fails in its own ways.</aside>
 </section>
+<section class="slide" data-id="s93" data-bleed="k" data-seconds="4" data-title="Part 3: Transformers, embeddings and agents">
+  <style>
+    .s93 .pk{position:absolute;left:120px;top:250px;font:500 34px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--A)}
+    .s93 .pt1{position:absolute;left:120px;top:320px;width:1680px;margin:0;font:600 112px/1.02 var(--sans);letter-spacing:-.04em;color:#fff}
+    .s93 .ps{position:absolute;left:124px;top:610px;width:1500px;margin:0;font:400 44px/1.25 var(--sans);color:var(--grey-1)}
+    .s93 .tr{position:absolute;left:120px;top:860px;width:1680px;display:flex;gap:24px}
+    .s93 .pt{flex:1;border-top:4px solid rgba(255,255,255,.22);padding-top:18px;color:rgba(255,255,255,.45);font:500 28px/1.2 var(--sans)}
+    .s93 .pt .pn{display:block;font:500 24px/1 var(--mono);letter-spacing:.12em;margin-bottom:10px}
+    .s93 .pt.on{border-top-color:var(--A);color:#fff}
+    .s93 .pt.on .pn{color:var(--A)}
+  </style>
+  <div class="s93">
+    <div class="pk hid">Part 3 of 4</div>
+    <h1 class="pt1 hid">Transformers, embeddings and agents</h1>
+    <p class="ps hid">The models that read, write and act.</p>
+    <div class="tr hid"><div class="pt"><span class="pn">01</span><span class="px">Classifiers</span></div><div class="pt"><span class="pn">02</span><span class="px">Physical attacks</span></div><div class="pt on"><span class="pn">03</span><span class="px">Transformers, embeddings, agents</span></div><div class="pt"><span class="pn">04</span><span class="px">Defences</span></div></div>
+  </div>
+  <aside class="notes">Part three: transformers, embeddings and agents.</aside>
+</section>
 <section class="slide" data-id="s10" data-seconds="35" data-title="Poison the well">
   <style>
     .s10 .flow{position:absolute;left:0;top:200px;width:1920px;height:760px;transform-origin:0 0}
@@ -1377,7 +1434,7 @@ body.presenting #presenter{display:block}
     <div class="abs cite c3 hid" style="left:120px;top:990px">Souly et al., 2025 (Anthropic, UK AI Security Institute, Alan Turing Institute). Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples</div>
   </div>
 
-  <aside class="notes">Part three: transformers, embeddings and agents. It starts before the model exists, with its data: images and text scraped off the internet, far too much to check by hand. [click] That is data poisoning: plant bad examples where the model learns, and it learns them. Images here, but it works on text and code too. [click] And you need very little. In a 2025 study by Anthropic and the UK AI Security Institute, 250 planted documents taught every model, small or large, a hidden trigger word that makes it spit out gibberish.</aside>
+  <aside class="notes">It starts before the model exists, with its data: images and text scraped off the internet, far too much to check by hand. [click] That is data poisoning: plant bad examples where the model learns, and it learns them. Images here, but it works on text and code too. [click] And you need very little. In a 2025 study by Anthropic and the UK AI Security Institute, 250 planted documents taught every model, small or large, a hidden trigger word that makes it spit out gibberish.</aside>
 </section>
 <section class="slide" data-id="s10a" data-seconds="55" data-title="How to poison a picture">
   <style>
@@ -2255,6 +2312,25 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Coding assistants now install software for us, so attackers poison what they install. One in five suggested packages did not exist. [click] The same fake names keep coming back, so an attacker registers one and waits. The next install runs their code. [click] Models: a model file can run code the moment you load it. JFrog found about 100 on Hugging Face. [click] And the tool itself. In February, one GitHub issue title fooled Cline's AI triage bot, and a poisoned Cline shipped on npm for about eight hours, installing another AI agent. My haiku was harmless. Same trick, with a payload, shipped to everyone who trusts the tool.</aside>
 </section>
+<section class="slide" data-id="s94" data-bleed="k" data-seconds="4" data-title="Part 4: Defences">
+  <style>
+    .s94 .pk{position:absolute;left:120px;top:250px;font:500 34px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--A)}
+    .s94 .pt1{position:absolute;left:120px;top:320px;width:1680px;margin:0;font:600 150px/1.02 var(--sans);letter-spacing:-.04em;color:#fff}
+    .s94 .ps{position:absolute;left:124px;top:520px;width:1500px;margin:0;font:400 44px/1.25 var(--sans);color:var(--grey-1)}
+    .s94 .tr{position:absolute;left:120px;top:860px;width:1680px;display:flex;gap:24px}
+    .s94 .pt{flex:1;border-top:4px solid rgba(255,255,255,.22);padding-top:18px;color:rgba(255,255,255,.45);font:500 28px/1.2 var(--sans)}
+    .s94 .pt .pn{display:block;font:500 24px/1 var(--mono);letter-spacing:.12em;margin-bottom:10px}
+    .s94 .pt.on{border-top-color:var(--A);color:#fff}
+    .s94 .pt.on .pn{color:var(--A)}
+  </style>
+  <div class="s94">
+    <div class="pk hid">Part 4 of 4</div>
+    <h1 class="pt1 hid">Defences</h1>
+    <p class="ps hid">Guardrails, measurement and testing.</p>
+    <div class="tr hid"><div class="pt"><span class="pn">01</span><span class="px">Classifiers</span></div><div class="pt"><span class="pn">02</span><span class="px">Physical attacks</span></div><div class="pt"><span class="pn">03</span><span class="px">Transformers, embeddings, agents</span></div><div class="pt on"><span class="pn">04</span><span class="px">Defences</span></div></div>
+  </div>
+  <aside class="notes">Part four: defences.</aside>
+</section>
 <section class="slide" data-id="s26" data-seconds="40" data-title="Guardrails speak text">
   <style>
     .s26 .ll{position:absolute;left:120px;width:180px;font:500 40px/1 var(--sans);letter-spacing:-.01em;color:var(--ink)}
@@ -2921,6 +2997,17 @@ Deck.register('s02', {
       await FX.in(c.qa('.nm, .rl, .dis, .vr, .logo'), { y: 14, dur: 550, stagger: 110 });
     },
   ],
+});
+</script>
+<script>
+Deck.register('s91', {
+  enter: async (c) => {
+    FX.in(c.q('.tr'), { y: 10, dur: 600 });
+    FX.in(c.q('.pk'), { y: 10, dur: 500, delay: 150 });
+    await FX.in(c.q('.pt1'), { y: 24, dur: 700, delay: 250 });
+    await FX.in(c.q('.ps'), { y: 12, dur: 500 });
+  },
+  beats: [],
 });
 </script>
 <script>
@@ -3626,6 +3713,17 @@ Deck.register('s21', {
     ],
   });
 })();
+</script>
+<script>
+Deck.register('s92', {
+  enter: async (c) => {
+    FX.in(c.q('.tr'), { y: 10, dur: 600 });
+    FX.in(c.q('.pk'), { y: 10, dur: 500, delay: 150 });
+    await FX.in(c.q('.pt1'), { y: 24, dur: 700, delay: 250 });
+    await FX.in(c.q('.ps'), { y: 12, dur: 500 });
+  },
+  beats: [],
+});
 </script>
 <script>
 (function () {
@@ -5224,6 +5322,17 @@ Deck.register('s09b', {
 })();
 </script>
 <script>
+Deck.register('s93', {
+  enter: async (c) => {
+    FX.in(c.q('.tr'), { y: 10, dur: 600 });
+    FX.in(c.q('.pk'), { y: 10, dur: 500, delay: 150 });
+    await FX.in(c.q('.pt1'), { y: 24, dur: 700, delay: 250 });
+    await FX.in(c.q('.ps'), { y: 12, dur: 500 });
+  },
+  beats: [],
+});
+</script>
+<script>
 (function () {
   /* the stream: a conveyor of tiny image tiles. Columns drift right, leave the wall and funnel into the model ring. */
   const TS = 40, P = 48, ROWS = 13, WCOLS = 13, N = 28, X0 = 120, Y0 = 40, V = 54;
@@ -5945,6 +6054,17 @@ Deck.register('s16b', {
     ],
   });
 })();
+</script>
+<script>
+Deck.register('s94', {
+  enter: async (c) => {
+    FX.in(c.q('.tr'), { y: 10, dur: 600 });
+    FX.in(c.q('.pk'), { y: 10, dur: 500, delay: 150 });
+    await FX.in(c.q('.pt1'), { y: 24, dur: 700, delay: 250 });
+    await FX.in(c.q('.ps'), { y: 12, dur: 500 });
+  },
+  beats: [],
+});
 </script>
 <script>
 (function () {
