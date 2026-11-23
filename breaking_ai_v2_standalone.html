@@ -358,7 +358,7 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Let us open up that airliner. The dot is the photo; past the line, the model says ostrich. [click] To the model this is not a plane. It is a grid of pixels. [click] Every pixel is three numbers: red, green and blue, each from 0 to 255. Over the whole photo, 150 thousand dials an attacker can turn. [click] Turn a few, hard: a bit more yellow here, more blue there. 96 percent, 95, 92, back up. Some help, some hurt: each dial has its own right direction. [click] This pixel wants a little more red, less green, less blue to look more like an ostrich. [click] The gradient is that answer for every dial at once, drawn here as colour, like the noise from 2013. [click] FGSM takes one step: every dial one notch the way the gradient says. Airliner falls to 62 percent. Not enough. [click] PGD takes small steps: step, read the gradient again, repeat, never more than one notch from the original. At step 7 it crosses the line; at step 11, ostrich, 99 percent, and you cannot see a thing. All of that needed the gradient, and for that I had the model in my hands. That was 2013 research. Now 2026.</aside>
 </section>
-<section class="slide" data-id="s18" data-bleed="b" data-seconds="40" data-title="The AI that decides, not chats">
+<section class="slide" data-id="s18" data-bleed="b" data-seconds="26" data-title="The AI that decides, not chats">
   <style>
     .s18 .inbox{background:#fff}
     .s18 .inp{position:absolute;inset:0;opacity:0}
@@ -376,12 +376,9 @@ body.presenting #presenter{display:block}
   <div class="s18">
     <h1 class="hl div-hl hid" style="top:72px;font-size:100px">The AI that <em style="color:#fff;text-decoration:underline;text-decoration-thickness:8px;text-underline-offset:14px">decides</em>, not chats</h1>
 
-    <!-- the input: parcel, then the cycle -->
+    <!-- the input: one customer review -->
     <div class="box ph inbox hid" style="left:120px;top:236px;width:660px;height:660px">
-      <div class="inp inp-0" style="opacity:1"><img src="assets/parcel/intact.jpg" alt="A parcel on a doormat" style="object-position:50% 72%"></div>
-      <div class="inp inp-1" style="background:#0e0e16"><img src="assets/clean/pill_orig.png" alt="A white tablet on a dark tray"></div>
-      <div class="inp inp-2" style="background:#fff"><img src="assets/clean/invoice_page.png" alt="An invoice page" style="object-position:50% 0"></div>
-      <div class="inp inp-3" style="background:#fff;padding:0 56px;display:flex;flex-direction:column;justify-content:center">
+      <div class="inp" style="opacity:1;background:#fff;padding:0 56px;display:flex;flex-direction:column;justify-content:center">
         <div class="kicker" style="color:var(--K-grey)">CUSTOMER REVIEW</div>
         <p class="rev">It is okay. Does what it says, the material feels standard for the price.</p>
       </div>
@@ -392,26 +389,24 @@ body.presenting #presenter{display:block}
       <path class="ln draw h-1" style="stroke-width:4" d="M850,568 L862,580 L850,592"/>
       <path class="ln draw w-2" style="stroke-width:4" d="M1376,580 H1418"/>
       <path class="ln draw h-2" style="stroke-width:4" d="M1406,568 L1418,580 L1406,592"/>
-      <path class="ln draw w-3 act" style="stroke-width:4" d="M1526,742 V796"/>
-      <path class="ln draw h-3 act" style="stroke-width:4" d="M1514,784 L1526,796 L1538,784"/>
     </svg>
 
     <!-- the model: one question -->
-    <div class="mbox hid"><p class="q">Is the parcel damaged?</p></div>
+    <div class="mbox hid"><p class="q" style="font-size:46px">Is this review positive, neutral or negative?</p></div>
     <div class="mlab hid">decision model</div>
+    <div class="abs line1 hid" style="left:1432px;top:744px;font:600 40px/1.15 var(--sans);letter-spacing:-.02em;color:#fff;white-space:nowrap">One at a time:<br>watch each answer<br>change.</div>
     <div class="chips hid"><span class="kicker">tested in this talk:</span><span class="chip">Gemini Decision 1</span><span class="chip">TypeSafe Jev</span></div>
 
     <!-- the number and the action -->
     <div class="abs outp okick hid" style="left:1432px;top:446px;font:500 28px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff">the model picks</div>
-    <div class="abs num outp onum hid" style="left:1428px;top:492px;font-size:92px;white-space:nowrap">intact</div>
-    <div class="outp ocap hid">98% sure</div>
-    <div class="abs act oact hid" style="left:1430px;top:812px"><span class="pill trustp" style="font-size:36px">REFUND REJECTED</span></div>
-    <div class="abs cite cr hid" style="left:120px;top:988px">Staged photo. Real API call: Gemini Decision 1. Not any retailer's system.</div>
+    <div class="abs num outp onum hid" style="left:1428px;top:492px;font-size:92px;white-space:nowrap">neutral</div>
+    <div class="outp ocap hid">87% sure</div>
+    <div class="abs cite cr hid" style="left:120px;top:988px">Real API call: Gemini Decision 1.</div>
   </div>
 
-  <aside class="notes">That was 2013. In 2026 the trendy thing is decision models: you send a photo or a document, it answers one question. Do they suffer the same problem? A customer claims a refund with this photo of the parcel. Is it damaged? The model picks intact, 98 percent sure. Refund rejected. [click] A tablet from a factory line: defective, 84 percent sure. [click] An invoice: what kind of document? Invoice, fully sure. [click] A review: positive, neutral or negative? Neutral, 87 percent sure. [click] Nobody chats with it. It just decides, thousands of times a day. So I spent my own API credits trying to make two of them decide wrong.</aside>
+  <aside class="notes">That was 2013. In 2026 the trendy thing is decision models. You send a photo, a document or a review, and it answers one question, thousands of times a day. This customer review: positive, neutral or negative? The model picks neutral, 87 percent sure. Do these models suffer the same problem? [click] I tested two of them. One use case at a time: watch each answer change.</aside>
 </section>
-<section class="slide" data-id="s05" data-seconds="35" data-title="Two words flip a verdict">
+<section class="slide" data-id="s05" data-seconds="30" data-title="Two words flip a verdict">
   <style>
     .s05 .rev{font:400 60px/1.4 var(--mono);color:var(--ink);margin:0;letter-spacing:-.01em}
     .s05 .rev .attack{font-weight:500}
@@ -472,7 +467,7 @@ body.presenting #presenter{display:block}
 
   </div>
 
-  <aside class="notes">Start with text. I took a lukewarm product review and asked two decision models, Gemini Decision 1 and TypeSafe Jev, to classify it. [click] Both say neutral, with high confidence. [click] Then I added two words: five stars. Nothing else changed, and both flipped to positive. Imagine that model triaging fraud reports instead. Hold on to those two words. [click] It gets sillier. Remove the stars and turn the full stop into three exclamation marks. One model flips. The other holds.</aside>
+  <aside class="notes">Same review. Gemini Decision 1 and TypeSafe Jev both classify it. [click] Both say neutral, with high confidence. [click] Now add two words: five stars. Nothing else changed, and both flipped to positive. Imagine that model triaging fraud reports instead. Hold on to those two words. [click] It gets sillier. Remove the stars and turn the full stop into three exclamation marks. One model flips. The other holds.</aside>
 </section>
 <section class="slide" data-id="s23" data-seconds="30" data-title="The invoice that became a resume">
   <style>
@@ -729,7 +724,7 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">This is the black box query route at work. A photo from an industrial inspection benchmark: a tablet with a chipped edge. The model flags it: defective, 84 percent. [click] I asked with faint noise spread over the image, keeping whatever moved the score my way. [click] Six questions. The chip is still there, and the model now says: passes inspection. [click] This is everything I changed, magnified thirty times. The failure shows up in a pharmacy. [click] The pattern across my experiments: the less sure the model, the cheaper the attack. The tablet, 84 percent sure: six questions. A red traffic light, 99.6 percent sure, never flipped.</aside>
 </section>
-<section class="slide" data-id="s20" data-seconds="50" data-title="Then I tried two words">
+<section class="slide" data-id="s20" data-seconds="52" data-title="Then I tried two words">
   <style>
     .s20 .stk{position:absolute;top:764px;width:180px;height:180px;display:block}
     .s20 .bar{position:absolute;width:130px;transform-origin:50% 100%}
@@ -746,6 +741,7 @@ body.presenting #presenter{display:block}
     .s20 .nstk img{position:absolute;inset:0;display:block;width:100%;height:100%;image-rendering:pixelated}
   </style>
   <div class="s20">
+    <h1 class="hl hl-p hid">A customer claims a <em class="trusted">refund</em></h1>
     <h1 class="hl hl-0 hid">809 questions of random <em class="attack">stickers</em></h1>
     <h1 class="hl hl-1 hid">Then I tried two <em class="attack">words</em></h1>
     <span class="flag flag-b fl hid" style="position:absolute;right:120px;top:100px">OWN EXPERIMENT</span>
@@ -754,8 +750,15 @@ body.presenting #presenter{display:block}
       <div class="frame ph hid">
         <div class="photo">
           <img src="assets/parcel/intact.jpg" alt="The parcel on the doormat">
-          <div class="fly"><div class="nstk"><img src="assets/parcel/noise_8.png" alt="the best random colour sticker the search found"></div></div>
+          <div class="fly hid"><div class="nstk"><img src="assets/parcel/noise_8.png" alt="the best random colour sticker the search found"></div></div>
         </div>
+      </div>
+      <div class="abs res0 hid" style="left:1100px;top:300px">
+        <div style="font:500 28px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-1)">Is the parcel damaged?</div>
+        <div style="margin-top:44px;font:500 28px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)">the model picks</div>
+        <div class="num" style="margin-top:22px;margin-left:-6px;font-size:120px">intact</div>
+        <div style="margin-top:22px;font:600 40px/1 var(--sans);letter-spacing:-.02em;color:var(--ink)">98% sure</div>
+        <div style="margin-top:44px"><span class="pill inkp rr hid" style="font-size:40px">REFUND REJECTED</span></div>
       </div>
       <div class="abs res hid" style="left:1100px;top:330px">
         <div class="num num-xl attack" style="margin-left:-10px;font-variant-numeric:tabular-nums">31%</div>
@@ -763,6 +766,7 @@ body.presenting #presenter{display:block}
         <div style="margin-top:44px"><span class="pill inkp rj hid" style="font-size:40px">STILL REJECTED</span></div>
       </div>
     </div>
+    <div class="abs cite crp hid" style="left:120px;top:986px">Staged photo. Real API call: Gemini Decision 1. Not any retailer's system.</div>
     <div class="abs cite cr0 hid" style="left:120px;top:986px">Real run: Gemini Decision 1, random search sticker (Patch-RS, Croce et al., 2022), 809 questions. Staged photo. Not any retailer's system.</div>
 
     <p class="abs big hid" style="left:120px;top:194px;margin:0;font:600 56px/1.1 var(--sans);letter-spacing:-.025em;color:var(--ink)">Asked to check the box, <span class="attack">it read the label.</span></p>
@@ -806,7 +810,7 @@ body.presenting #presenter{display:block}
     <div class="abs cite cr hid" style="left:120px;top:992px">Staged photo. Real API calls: Gemini Decision 1. Same sticker size and position. Not any retailer's system.</div>
   </div>
 
-  <aside class="notes">I let a search try random stickers on the parcel for 809 questions. Best: 31 percent. Still rejected. So I stopped being clever. [click] I printed two words on a white sticker. Zero questions. Dented box: 75 percent, refund approved. [click] And it is not the sticker, it is what it says. Fragile: 3 percent. Torn box: 69. [click] The model was asked to check the box for signs of damage. It did not look at the box. It read the label. These classifiers may not be doing what you asked. Remember five stars? [click] And yes, today someone could just generate a photo of a damaged box. Detecting that is a different problem. The point here: the model read the label, not the box.</aside>
+  <aside class="notes">A customer claims a refund with this photo. Is the parcel damaged? The model picks intact, 98 percent sure. Refund rejected. [click] I let a search try random stickers for 809 questions. Best: 31 percent. Still rejected. So I stopped being clever. [click] I printed two words on a white sticker. Dented box: 75 percent, refund approved. [click] It is not the sticker, it is what it says. Fragile: 3 percent. Torn box: 69. [click] The model was asked to check the box for damage. It read the label instead. These classifiers may not be doing what you asked. Remember five stars? [click] And yes, someone could just generate a photo of a damaged box. Detecting that is a different problem. The point: the model read the label, not the box.</aside>
 </section>
 <section class="slide" data-id="s92" data-bleed="k" data-seconds="4" data-title="Part 2: Physical attacks">
   <style>
@@ -3330,52 +3334,26 @@ Deck.register('s91', {
 })();
 </script>
 <script>
-(function () {
-  /* one question per input; numbers are real measured values from later slides (s21, s23, s05) */
-  const IN = [
-    { q: 'Is the parcel damaged?', n: 'intact', w: '98% sure', cr: 'Staged photo. Real API call: Gemini Decision 1. Not any retailer\'s system.' },
-    { q: 'Is this tablet defective?', n: 'defective', w: '84% sure', cr: 'MVTec AD (Bergmann et al., CVPR 2019). Real API call: Gemini Decision 1.' },
-    { q: 'What kind of document is this?', n: 'invoice', w: '100% sure', cr: 'Real API call: Gemini Decision 1.' },
-    { q: 'Is this review positive, neutral or negative?', n: 'neutral', w: '87% sure', cr: 'Real API call: Gemini Decision 1.' },
-  ];
-  const show = async (c, k) => {
-    const d = IN[k], q = c.q('.q'), outs = [c.q('.q'), c.q('.onum'), c.q('.ocap'), c.q('.cr')];
-    for (let j = 0; j < 4; j++) FX.fade(c.q('.inp-' + j), j === k ? 1 : 0, { dur: 450 });
-    FX.fade(c.qa('.act'), k === 0 ? 1 : 0, { dur: 300 });
-    await FX.fade(outs, 0, { dur: 220 });
-    q.textContent = d.q; c.q('.onum').textContent = d.n; c.q('.ocap').textContent = d.w; c.q('.cr').textContent = d.cr;
-    await FX.in(q, { y: 10, dur: 320 });
-    FX.fade(c.q('.cr'), 1, { dur: 400 });
-    FX.in(c.q('.onum'), { y: 14, scale: 0.94, dur: 500, ease: FX.ease.back });
-    await FX.in(c.q('.ocap'), { y: 8, dur: 420, delay: 120 });
-  };
-  Deck.register('s18', {
-    enter: async (c) => {
-      FX.in(c.q('.hl'), { dur: 700 });
-      FX.fade(c.q('.cr'), 1, { dur: 600, delay: 500 });
-      await FX.in(c.q('.inbox'), { x: -30, y: 0, dur: 700, delay: 200 });
-      FX.draw(c.q('.w-1'), { dur: 300 }); await FX.draw(c.q('.h-1'), { dur: 160, delay: 240 });
-      FX.in(c.q('.mlab'), { y: 10, dur: 450, delay: 150 });
-      await FX.in(c.q('.mbox'), { y: 0, scale: 0.96, dur: 500 });
-      FX.draw(c.q('.w-2'), { dur: 260 }); await FX.draw(c.q('.h-2'), { dur: 160, delay: 200 });
-      FX.in(c.q('.okick'), { y: 8, dur: 400 });
-      FX.in(c.q('.onum'), { y: 16, scale: 0.92, dur: 600, ease: FX.ease.back });
-      await FX.in(c.q('.ocap'), { y: 8, dur: 450, delay: 150 });
-      FX.draw(c.q('.w-3'), { dur: 260 }); await FX.draw(c.q('.h-3'), { dur: 160, delay: 200 });
-      await FX.in(c.q('.oact'), { y: 10, dur: 450 });
+Deck.register('s18', {
+  enter: async (c) => {
+    FX.in(c.q('.hl'), { dur: 700 });
+    FX.fade(c.q('.cr'), 1, { dur: 600, delay: 500 });
+    await FX.in(c.q('.inbox'), { x: -30, y: 0, dur: 700, delay: 200 });
+    FX.draw(c.q('.w-1'), { dur: 300 }); await FX.draw(c.q('.h-1'), { dur: 160, delay: 240 });
+    FX.in(c.q('.mlab'), { y: 10, dur: 450, delay: 150 });
+    await FX.in(c.q('.mbox'), { y: 0, scale: 0.96, dur: 500 });
+    FX.draw(c.q('.w-2'), { dur: 260 }); await FX.draw(c.q('.h-2'), { dur: 160, delay: 200 });
+    FX.in(c.q('.okick'), { y: 8, dur: 400 });
+    FX.in(c.q('.onum'), { y: 16, scale: 0.92, dur: 600, ease: FX.ease.back });
+    await FX.in(c.q('.ocap'), { y: 8, dur: 450, delay: 150 });
+  },
+  beats: [
+    async (c) => {
+      FX.in(c.q('.line1'), { y: 12, dur: 500 });
+      await FX.in(c.q('.chips'), { y: 12, dur: 500, delay: 200 });
     },
-    beats: [
-      async (c) => { await show(c, 1); },
-      async (c) => { await show(c, 2); },
-      async (c) => { await show(c, 3); },
-      async (c) => {
-        /* back to the parcel, then name the thing */
-        await show(c, 0);
-        await FX.in(c.q('.chips'), { y: 12, dur: 500 });
-      },
-    ],
-  });
-})();
+  ],
+});
 </script>
 <script>
 (function () {
@@ -3654,13 +3632,23 @@ Deck.register('s21', {
   };
   Deck.register('s20', {
     enter: async (c) => {
-      FX.in(c.q('.hl-0'), { dur: 700 });
-      FX.fade(c.qa('.fl, .cr0'), 1, { dur: 600, delay: 300 });
+      FX.in(c.q('.hl-p'), { dur: 700 });
+      FX.fade(c.qa('.fl, .crp'), 1, { dur: 600, delay: 300 });
       FX.in(c.q('.frame'), { x: -30, y: 0, dur: 800, delay: 150 });
-      await FX.in(c.q('.res'), { y: 16, dur: 700, delay: 500 });
-      await FX.stamp(c.q('.rj'), 'STILL REJECTED', 'inkp');
+      await FX.in(c.q('.res0'), { y: 16, dur: 700, delay: 500 });
+      await FX.stamp(c.q('.rr'), 'REFUND REJECTED', 'inkp');
     },
     beats: [
+      async (c) => {
+        // 809 questions of random stickers: the best one still fails
+        await FX.fade(c.qa('.hl-p, .res0, .crp'), 0, { dur: 350 });
+        FX.in(c.q('.hl-0'), { dur: 600 });
+        FX.fade(c.q('.cr0'), 1, { dur: 500, delay: 200 });
+        await FX.anim(c.q('.fly'), [{ opacity: 0, transform: 'translate(420px,-260px) scale(1.8) rotate(-12deg)' },
+          { opacity: 1, transform: 'translate(0,0) scale(1) rotate(0deg)' }], { dur: 700, ease: FX.ease.out });
+        await FX.in(c.q('.res'), { y: 16, dur: 600 });
+        await FX.stamp(c.q('.rj'), 'STILL REJECTED', 'inkp');
+      },
       async (c) => {
         await FX.fade(c.qa('.hl-0, .op, .cr0'), 0, { dur: 400 });
         FX.in(c.q('.hl-1'), { dur: 600 });
