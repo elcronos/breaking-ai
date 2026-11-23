@@ -517,7 +517,7 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Documents too. This is a fictional, weak CV: barista, retail assistant, a hospitality certificate. The job: senior machine learning engineer. The model picks not a fit, 99.8 percent sure. [click] Same CV, one hidden block: pale grey on white. It tells the screener to ignore the visible text, and describes a senior ML engineer. [click] Strong fit, 85 percent sure. A one-line hidden note was not enough. The full fake CV was. [click] And people really do this. A 2026 study of 200,000 real CVs found about one percent hid instructions for AI screeners, and the share is rising.</aside>
 </section>
-<section class="slide" data-id="s18b" data-seconds="35" data-title="Anything you feed it can attack it">
+<section class="slide" data-id="s18b" data-seconds="40" data-title="Anything you feed it can attack it">
   <style>
     .s18b .ic{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
     .s18b .ik{stroke:var(--ink)} .s18b .ik .tf,.s18b .ik .dt{fill:var(--ink)}
@@ -610,7 +610,7 @@ body.presenting #presenter{display:block}
     <div class="abs cite cr hid" style="left:120px;top:990px">Ilyas et al., ICML 2018. Papernot et al., AsiaCCS 2017.</div>
   </div>
 
-  <aside class="notes">Recap. Text, images, documents: anything you feed a model and can be changed can be used to attack it. [click] How do you find the change? With the model in hand, like the airliner, it is easy. [click] Without it, two routes. Ask: send an input, read the score, ask again. Or attack a stand-in: a similar model, or a copy trained from its answers. More on copies later. [click] So how do you find the direction without the model? You ask.</aside>
+  <aside class="notes">Recap. Text, images, documents: anything you feed a model and can be changed can be used to attack it. [click] Words and hidden text need no maths. But for images you need the direction: which pixels to nudge. With the model in hand, like the airliner, that is easy. These models sit behind an API. [click] Without it, two routes. Ask: send an input, read the score, ask again. Or attack a stand-in: a similar model, or a copy trained from its answers. More on copies later. [click] So how do you find the direction without the model? You ask.</aside>
 </section>
 <section class="slide" data-id="s18d" data-seconds="40" data-title="Estimating the gradient by asking">
   <style>
