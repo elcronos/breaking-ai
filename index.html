@@ -942,7 +942,7 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">This one is from my own PhD research. We built a method that designs a paint job for a 3D model of a tank, optimised to keep working from many angles, lights and backgrounds, and against AI models it was never trained on. [click] For this image, the top answer of 10 out of 18 image classifiers is: ostrich. Across views and backgrounds, the 18 models recognise the tank 3.6 percent of the time, against 73 percent with normal paint. Rendered images, not a real vehicle. [click] The same method turned an aircraft into a kite. The work was partly supported by DARPA, whose GARD program, launched in 2019, funds the defence against exactly this.</aside>
 </section>
-<section class="slide" data-id="s08b" data-seconds="68" data-title="A song that gives orders">
+<section class="slide" data-id="s08b" data-seconds="58" data-title="A song that gives orders">
   <style>
     .s08b .gl,.s08b .dim,.s08b .flat{position:absolute;left:0;top:0;width:1920px;height:1080px}
     .s08b .dim{background:#fff;pointer-events:none}
@@ -1056,7 +1056,7 @@ body.presenting #presenter{display:block}
         <span class="t attack"><span class="bt"></span></span>
       </div>
       <div class="abs label cw2 hid" style="left:232px;top:762px;color:var(--ink);font-size:34px">Over 99.9% the same as the original recording.</div>
-      <div class="abs cite cw3 hid" style="left:120px;top:990px">Carlini and Wagner, 2018. Audio Adversarial Examples. Attack on Mozilla DeepSpeech; sentences from the authors' example page.</div>
+      <div class="abs cite cw3 hid" style="left:330px;top:990px">Based on Carlini and Wagner, 2018. Audio Adversarial Examples. Attack on Mozilla DeepSpeech.</div>
     </div>
 
     <!-- beat 4: it survives speakers and radio -->
@@ -1075,7 +1075,7 @@ body.presenting #presenter{display:block}
     </div>
   </div>
 
-  <aside class="notes">Cameras and lasers are not the only senses. A song is playing, and a smart speaker is listening. [click] Pull the sound apart. Most of it is the song. Riding on it, a tiny extra signal, magnified here. [click] You hear a song. The speaker hears: open the garage door. And it opens. [click] This is real. Berkeley researchers changed an audio file by under a tenth of a percent. People hear an ordinary sentence; a speech recognizer writes: okay google, browse to evil dot com. [click] It survives speakers too, even FM radio: of 204 listeners, not one made out the hidden command. And the newest AI, the models that read, write and act, fails in its own ways.</aside>
+  <aside class="notes">Cameras and lasers are not the only senses. A song is playing, and a smart speaker is listening. [click] Pull the sound apart. Most of it is the song. Riding on it, a tiny extra signal, magnified here. [click] You hear a song. The speaker hears: open the garage door. And it opens. Berkeley researchers did this for real, changing a recording by under a tenth of a percent. [click] It survives speakers too, even FM radio: of 204 listeners, not one made out the hidden command. And the newest AI, the models that read, write and act, fails in its own ways.</aside>
 </section>
 <section class="slide" data-id="s93" data-bleed="k" data-seconds="5" data-title="Part 3: GenAI, transformers and agents">
   <style>
@@ -5891,6 +5891,7 @@ Deck.register('s29', {
     const b = sp.beats;
     sp.beats = groups.map(g => async (c) => {
       for (const k of g) {
+        if (typeof k === 'function') { await k(c); continue; }
         const quick = typeof k === 'string', i = quick ? +k.slice(1) : k;
         if (!b[i]) continue;
         if (quick) { const p = Deck.instant; Deck.instant = true; try { await b[i](c); } finally { Deck.instant = p; } }
@@ -5901,6 +5902,8 @@ Deck.register('s29', {
   fold('s04b', [[0, 1], ['!2', 3, 4], [5, 6]]);
   fold('s09', [['!0', 1], [2], [3], [4]]);
   fold('s17b', [['!0', '!1', 2]]);
+  /* song: the Carlini result beat is dropped; its citation shows under the garage-door animation */
+  fold('s08b', [[0], [1, c => FX.in(c.q('.cw3'), { y: 0, dur: 400 })], [c => { FX.fade(c.qa('.bub-h, .bub-s, .tg-r, .tg-s, .fl, .stw .pill, .cw3'), 0, { dur: 300 }); return FX.fade(c.q('.dim'), 0.94, { dur: 550 }); }, 3]]);
   fold('s14', [['!0', 1], [2]]);
   fold('s15', [[0, 1], [2], [3, 4]]);
 })();
