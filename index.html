@@ -898,6 +898,51 @@ body.presenting #presenter{display:block}
 
   <aside class="notes">Self-driving cars also see in 3D. A LiDAR is a spinning laser on the roof: every time the beam hits something, that becomes one dot. [click] This is what the car actually sees: almost ninety thousand dots, and the detector finds a car and a pedestrian. [click] In this simulation, add twenty carefully placed points. The pedestrian box flickers, and it is gone, yet the person's points never moved. [click] The real attack, from the paper: a normal object is detected; a 3D-printed one with an adversarial shape is not. [click] This is the object they printed. On a real road, the LiDAR detector of an industry driving platform never saw it. Every sensor is an input. And nobody tested for it.</aside>
 </section>
+<section class="slide" data-id="s09b" data-seconds="31" data-title="Camouflage for algorithms">
+  <style>
+    .s09b .frame{left:120px;top:300px;width:1240px;height:623px}
+    .s09b .mil-ph{position:absolute;inset:0;background:var(--grey-3);display:flex;align-items:center;justify-content:center}
+    .s09b .mil-ph span{font:500 24px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--grey-1)}
+    .s09b .big{font:600 52px/1.1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
+    .s09b .big.g{color:var(--grey-1)}
+    .s09b .cap{font:600 40px/1.1 var(--sans);letter-spacing:-.02em;color:var(--ink)}
+    .s09b .half{position:absolute;top:250px;font:500 30px/1 var(--sans);color:var(--grey-1)}
+    .s09b .half.a{color:var(--a)}
+    .s09b .gard{font:500 34px/1.22 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+  </style>
+  <div class="s09b">
+    <h1 class="hl hid"><em class="attack">Camouflage</em> for algorithms</h1>
+
+    <!-- enter: the speaker's military aircraft photo (placeholder until supplied) -->
+    <div class="box ph frame milbox hid">
+      <div class="mil mil-ph"><span>Aircraft photo</span></div>
+    </div>
+    <div class="abs intro hid" style="left:1420px;top:330px;width:400px">
+      <div class="big">Hiding from sensors is an old military goal.</div>
+      <div class="big g" style="margin-top:36px">Now the sensors run on AI.</div>
+    </div>
+
+    <!-- beat 1: the real aerial result, Figure 5 of Adhikari, den Hollander et al. -->
+    <div class="abs half h1 hid" style="left:120px">Noise patches</div>
+    <div class="abs half a h2 hid" style="left:750px">Adversarial patches</div>
+    <div class="box ph frame fig hid"><img src="assets/real/hollander_aerial_patch.png" alt="Satellite image of eight parked jets. Left: with random noise patches the detector boxes seven of them. Right: with adversarial patches it boxes none." style="object-fit:fill"></div>
+    <div class="abs stat hid" style="left:1420px;top:300px;width:400px">
+      <span class="flag flag-b">REAL RESULT</span>
+      <div class="num num-lg attack" style="margin-top:20px">0</div>
+      <div class="cap" style="margin-top:22px">of 8 jets detected</div>
+      <div class="label" style="margin-top:14px">with noise patches: 7 of 8</div>
+    </div>
+    <div class="abs cite cr1 hid" style="left:120px;top:990px">Adhikari, den Hollander et al. (TNO, Dutch Ministry of Defence), Proc. SPIE 11543, 2020. Patches added digitally.</div>
+
+    <!-- beat 2: defence funds the defence -->
+    <div class="abs card-b gard-c hid" style="left:1420px;top:730px;width:400px;padding-top:20px">
+      <div class="gard">Defence agencies fund research on fooling AI, and on defending it.</div>
+      <div class="cite" style="margin-top:12px">DARPA GARD program, launched 2019</div>
+    </div>
+  </div>
+
+  <aside class="notes">Militaries want this too: today AI does much of the looking, on drone and satellite images. A study by the Dutch research organisation TNO: eight jets in a satellite image. With random noise patches the detector still finds seven. With patterns trained to fool it, none. Tested on images, not real aircraft.</aside>
+</section>
 <section class="slide" data-id="s09c" data-seconds="62" data-title="A tank the AI calls an ostrich">
   <style>
     .s09c .big{font:600 52px/1.1 var(--sans);letter-spacing:-.03em;color:var(--ink)}
@@ -5904,6 +5949,10 @@ Deck.register('s29', {
   fold('s17b', [['!0', '!1', 2]]);
   /* song: the Carlini result beat is dropped; its citation shows under the garage-door animation */
   fold('s08b', [[0], [1, c => FX.in(c.q('.cw3'), { y: 0, dur: 400 })], [c => { FX.fade(c.qa('.bub-h, .bub-s, .tg-r, .tg-s, .fl, .stw .pill, .cw3'), 0, { dur: 300 }); return FX.fade(c.q('.dim'), 0.94, { dur: 550 }); }, 3]]);
+  /* TNO jets: open straight on the real result (the aircraft photo was a placeholder); the GARD beat is skipped, the tank slide carries that line */
+  (function () { const sp = Deck.specs.s09b; if (!sp || !sp.beats) return; const en = sp.enter, b0 = sp.beats[0];
+    sp.enter = async (c) => { c.qa('.milbox, .intro').forEach(e => { e.style.display = 'none'; }); if (en) await en(c); if (b0) await b0(c); };
+    sp.beats = []; })();
   fold('s14', [['!0', 1, 2]]);
   fold('s15', [['!0', '!1', 2, 3, 4]]);
   fold('s17', [[0, 1, 2], [3]]);
